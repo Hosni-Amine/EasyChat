@@ -62,8 +62,6 @@ public class AddResReportFragment extends Fragment {
     private ArrayAdapter<String> spinnerAdapter;
     Timestamp selectedDate;
     String reportId;
-    String userId;
-
     public AddResReportFragment() {
 
     }
@@ -91,20 +89,6 @@ public class AddResReportFragment extends Fragment {
         spinnerAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, userNames);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         userSpinner.setAdapter(spinnerAdapter);
-
-
-        userSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                userId = userList.get(position).getUserId();
-                reportId = FirebaseUtil.getChatroomId(FirebaseUtil.currentUserId(),userId);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // Do nothing if nothing is selected
-            }
-        });
 
         datePickerButton.setOnClickListener(v -> {
             int year = calendar.get(Calendar.YEAR);
@@ -139,7 +123,7 @@ public class AddResReportFragment extends Fragment {
         add_Btn.setOnClickListener((v -> {
             setAdd_Btn();
         }));
-
+        setInProgress(false);
         return view;
     }
 
@@ -153,9 +137,7 @@ public class AddResReportFragment extends Fragment {
             AndroidUtil.showToast(getContext(), "Please select a date");
             return;
         }
-        setInProgress(true);
-        getOrCreateChatroomModel(text);
-        setInProgress(false);
+        sendResReportToUser(text);
 
         ReportsFragment reportsFragment = new ReportsFragment();
         FragmentManager fragmentManager = getParentFragmentManager();
@@ -165,57 +147,26 @@ public class AddResReportFragment extends Fragment {
         transaction.commit();
     }
 
-    void sendMessageToUser(String message){
-        // Update the reportModel with the last message details
-        reportModel.setLastMessageTimestamp(Timestamp.now());
-        reportModel.setLastMessageSenderId(FirebaseUtil.currentUserId());
-        reportModel.setLastMessage(message);
-
-        FirebaseUtil.getReportReference(reportId).set(reportModel)
-                .addOnSuccessListener(aVoid -> {
-                    FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            UserModel currentUserModel = task.getResult().toObject(UserModel.class);
-                            ChatMessageModel chatMessageModel = new ChatMessageModel(message, currentUserModel.getUserId(), userId, selectedDate);
-                            FirebaseFirestore db = FirebaseFirestore.getInstance();
-                            CollectionReference chatMessagesCollection = db.collection("reportselement");
-                            chatMessagesCollection.add(chatMessageModel)
-                                    .addOnSuccessListener(documentReference -> {
-                                        text_input.setText("");
-                                        AndroidUtil.showToast(getContext(), "Report created successfully");
-                                    })
-                                    .addOnFailureListener(e -> {
-                                        AndroidUtil.showToast(getContext(), "Report creation failed");
-                                    });
-                        } else {
-                            AndroidUtil.showToast(getContext(), "Failed to get current user details");
-                        }
-                    });
-                })
-                .addOnFailureListener(e -> {
-                    AndroidUtil.showToast(getContext(), "Failed to update report model");
-                });
-
-        setInProgress(false);
-    }
-
-    void getOrCreateChatroomModel(String text){
+    void sendResReportToUser(String message){
+        setInProgress(true);
+        reportId = FirebaseUtil.getChatroomId(FirebaseUtil.currentUserId(),FirebaseUtil.currentUserId());
         FirebaseUtil.getReportReference(reportId).get().addOnCompleteListener(task -> {
             if(task.isSuccessful()){
                 reportModel = task.getResult().toObject(ReportModel.class);
                 if(reportModel==null){
                     reportModel = new ReportModel(
                             reportId,
-                            Arrays.asList(FirebaseUtil.currentUserId(),userId),
+                            message,
                             Timestamp.now(),
-                            ""
+                            FirebaseUtil.currentUserId()
                     );
                     FirebaseUtil.getReportReference(reportId).set(reportModel);
                 }
-                sendMessageToUser(text);
             }
         });
+        setInProgress(false);
     }
+
 
     void setInProgress(boolean inProgress){
         if(inProgress){

@@ -10,6 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
         android:id="@+id/constraintLayout"
         android:layout_marginBottom="200dp">
 
@@ -18,7 +19,6 @@
             android:layout_height="match_parent"
             android:id="@+id/row0"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
             android:padding="10dp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintBottom_toTopOf="@id/row1">
@@ -27,7 +27,7 @@
                 android:id="@+id/profile_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_margin="22dp"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:background="@drawable/circular_bg"
                 android:backgroundTint="@color/my_primary"
@@ -39,61 +39,59 @@
                 android:layout_weight="1"
                 android:background="@color/white"
                 app:cardCornerRadius="20dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:orientation="horizontal">
 
                 <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:background="@color/white"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="match_parent">
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/dprofile_username"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=""
-                        android:textSize="30sp"
-                        android:textColor="@color/my_primary"
                         android:layout_marginStart="18dp"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="5dp"
+                        android:text=""
+                        android:textColor="@color/my_primary"
+                        android:textSize="30sp"
                         app:layout_constraintStart_toEndOf="@id/profile_image_view"
-                        app:layout_constraintTop_toTopOf="@id/profile_image_view"/>
+                        app:layout_constraintTop_toTopOf="@id/profile_image_view" />
 
                     <TextView
                         android:id="@+id/dprofile_email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=""
-                        android:textSize="14sp"
-                        android:textColor="@color/my_primary"
                         android:layout_marginStart="18dp"
+                        android:text=""
+                        android:textColor="@color/my_primary"
+                        android:textSize="14sp"
                         app:layout_constraintStart_toEndOf="@id/profile_image_view"
-                        app:layout_constraintTop_toBottomOf="@id/dprofile_username"/>
+                        app:layout_constraintTop_toBottomOf="@id/dprofile_username" />
 
                     <TextView
                         android:id="@+id/dprofile_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=""
-                        android:textSize="14sp"
-                        android:textColor="@color/my_primary"
                         android:layout_marginStart="18dp"
+                        android:text=""
+                        android:textColor="@color/my_primary"
+                        android:textSize="14sp"
                         app:layout_constraintStart_toEndOf="@id/profile_image_view"
-                        app:layout_constraintTop_toBottomOf="@id/dprofile_email"/>
+                        app:layout_constraintTop_toBottomOf="@id/dprofile_email" />
 
                     <TextView
                         android:id="@+id/dprofile_type"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=""
-                        android:textSize="14sp"
-                        android:textColor="@color/my_primary"
                         android:layout_marginStart="18dp"
+                        android:text=""
+                        android:textColor="@color/my_primary"
+                        android:textSize="14sp"
                         app:layout_constraintStart_toEndOf="@id/profile_image_view"
-                        app:layout_constraintTop_toBottomOf="@id/dprofile_phone"/>
-
-
+                        app:layout_constraintTop_toBottomOf="@id/dprofile_phone" />
 
 
                 </LinearLayout>
@@ -104,7 +102,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="175dp"
+            android:layout_height="wrap_content"
             android:id="@+id/row1"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
@@ -113,7 +111,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 app:cardCornerRadius="20dp">
@@ -130,17 +128,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/clothingName1"
-                        android:text="Edit profile"
-                        android:textSize="18sp"
+                        android:text="Edit profile"                        android:layout_marginVertical="10dp"
+                        android:textSize="15sp"
                         android:textColor="@color/my_primary"
-                        android:layout_marginTop="10dp"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/clothingImage"/>
 
                     <ImageView
-                        android:src="@drawable/user"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:src="@drawable/imgprofile"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:id="@+id/clothingImage"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true"/>
@@ -150,7 +147,7 @@
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 app:cardCornerRadius="20dp">
@@ -168,17 +165,17 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/beautyName1"
                         android:text="Breakdown catalog"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:textColor="@color/my_primary"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginVertical="10dp"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/beautyImage"/>
 
                     <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:id="@+id/beautyImage"
-                        android:src="@drawable/globalnetwork"
+                        android:src="@drawable/internet"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true"/>
 
@@ -190,7 +187,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="175dp"
+            android:layout_height="wrap_content"
             android:id="@+id/row2"
             android:orientation="horizontal"
             app:layout_constraintHorizontal_bias="0.0"
@@ -200,7 +197,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 app:cardCornerRadius="20dp">
@@ -216,19 +213,20 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginVertical="10dp"
                         android:id="@+id/homeName1"
-                        android:text="Resolution Report"
-                        android:textSize="18sp"
+                        android:text="CRM reports"
+                        android:textSize="15sp"
                         android:textColor="@color/my_primary"
                         android:layout_marginTop="10dp"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/resoldreports"/>
 
                     <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:id="@+id/resoldreports"
-                        android:src="@drawable/paste"
+                        android:src="@drawable/rereports"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true"/>
 
@@ -237,7 +235,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 app:cardCornerRadius="20dp">
@@ -255,17 +253,17 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/reports"
                         android:text="Reports"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:textColor="@color/my_primary"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginVertical="10dp"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/elecImage"/>
 
                     <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:id="@+id/elecImage"
-                        android:src="@drawable/paper"
+                        android:src="@drawable/datareport"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true"/>
 
@@ -276,7 +274,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="175dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -285,7 +283,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 app:cardCornerRadius="20dp">
@@ -303,15 +301,16 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/gisnout"
                         android:text="Logout"
-                        android:textSize="18sp"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="15sp"
                         android:textColor="@color/my_primary"
                         android:layout_marginTop="10dp"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/elecImage1"/>
 
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:id="@+id/elecImage1"
                         android:src="@drawable/logout"
                         android:layout_marginTop="15dp"

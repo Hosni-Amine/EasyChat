@@ -8,35 +8,28 @@
     android:gravity="top"
     android:layout_margin="20dp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:padding="8dp"
-        android:layout_marginTop="50dp"
-        android:id="@+id/row0">
-
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Adding report"
+            android:gravity="center"
             android:layout_centerHorizontal="true"
             android:textSize="22sp"
             android:textStyle="bold"
+            android:layout_marginVertical="15dp"
             android:textColor="@color/my_primary"
-            android:layout_marginStart="10dp"
             android:layout_centerVertical="true"
             android:id="@+id/other_username"
             />
 
-    </RelativeLayout>
 
 
     <EditText
         android:id="@+id/text_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="250dp"
         android:padding="10dp"
         android:hint="text here ..."
         android:inputType="textMultiLine"
@@ -45,7 +38,14 @@
         android:background="@drawable/edit_text_rounded_corner"
         android:elevation="10dp"
         android:minLines="3"/>
-
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_rounded_corner"
+        android:padding="10dp"
+        android:elevation="5dp"/>
 
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -62,35 +62,20 @@
             android:padding="10dp"
             android:textColor="@android:color/black"/>
 
-        <!-- Button to trigger the date picker dialog -->
         <Button
+
             android:id="@+id/date_picker_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Select Date"
-            android:backgroundTint="@color/white"
+            android:textSize="12sp"
+            android:background="@drawable/btn_rounded_corner"
+            android:backgroundTint="@color/my_primary"
             android:layout_gravity="center"
             android:padding="10dp"/>
 
-    </LinearLayout>
-
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:gravity="bottom"
-        android:layout_marginTop="130dp"
-        android:orientation="vertical">
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/btn_rounded_corner"
-            android:backgroundTint="@color/light_gray2"
-            android:padding="10dp"
-            android:elevation="5dp"/>
         <Button
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_rounded_corner"
@@ -113,6 +98,7 @@
             android:layout_gravity="center"
             android:id="@+id/profile_progress_bar"/>
     </LinearLayout>
+
 
 
 

@@ -6,49 +6,39 @@ import java.util.List;
 
 public class ReportModel {
     String reportId;
-    List<String> userIds;
-    Timestamp lastMessageTimestamp;
-    String lastMessageSenderId;
-    String lastMessage;
+    private String message;
+    private String senderId;
+    private Timestamp timestamp;
 
     public ReportModel() {
     }
 
-    public ReportModel(String reportId, List<String> userIds, Timestamp lastMessageTimestamp, String lastMessageSenderId) {
+    public ReportModel(String reportId,String message, Timestamp timestamp, String senderId) {
         this.reportId = reportId;
-        this.userIds = userIds;
-        this.lastMessageTimestamp = lastMessageTimestamp;
-        this.lastMessageSenderId = lastMessageSenderId;
+        this.message = message;
+        this.timestamp = timestamp;
+        this.senderId = senderId;
     }
-    public String getChatroomId() {
+    public String getReportId() {
         return reportId;
     }
-    public void setChatroomId(String reportId) {
-        this.reportId = reportId;
-    }
-    public List<String> getUserIds() {
-        return userIds;
-    }
-    public void setUserIds(List<String> userIds) {
-        this.userIds = userIds;
-    }
 
-    public Timestamp getLastMessageTimestamp() {
-        return lastMessageTimestamp;
+    public Timestamp getTimestamp() {
+        return timestamp;
     }
-    public void setLastMessageTimestamp(Timestamp lastMessageTimestamp) {
-        this.lastMessageTimestamp = lastMessageTimestamp;
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
-    public String getLastMessageSenderId() {
-        return lastMessageSenderId;
+    public String getSenderId() {
+        return senderId;
     }
-    public void setLastMessageSenderId(String lastMessageSenderId) {
-        this.lastMessageSenderId = lastMessageSenderId;
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
     }
-    public String getLastMessage() {
-        return lastMessage;
+    public String getMessage() {
+        return message;
     }
-    public void setLastMessage(String lastMessage) {
-        this.lastMessage = lastMessage;
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

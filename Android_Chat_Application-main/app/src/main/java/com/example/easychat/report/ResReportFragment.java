@@ -20,7 +20,7 @@ import com.example.easychat.DashboardFragment;
 import com.example.easychat.R;
 import com.example.easychat.adapter.ChatRecyclerAdapter;
 import com.example.easychat.adapter.RecentChatRecyclerAdapter;
-import com.example.easychat.adapter.ReportRecyclerAdapter;
+import com.example.easychat.adapter.ResReportRecyclerAdapter;
 import com.example.easychat.model.ChatMessageModel;
 import com.example.easychat.model.ChatroomModel;
 import com.example.easychat.model.ReportModel;
@@ -34,7 +34,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class ResReportFragment extends Fragment {
 
     RecyclerView recyclerView;
-    ReportRecyclerAdapter adapter;
+    ResReportRecyclerAdapter adapter;
     ImageButton backBtn;
 
     public ResReportFragment() {
@@ -42,7 +42,7 @@ public class ResReportFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_reports, container, false);
+        View view = inflater.inflate(R.layout.fragment_res_report, container, false);
         recyclerView = view.findViewById(R.id.recyler_view_chat);
 
         ImageView addbutton = view.findViewById(R.id.add_report_btn);
@@ -77,27 +77,17 @@ public class ResReportFragment extends Fragment {
     }
 
     void setupRecyclerView() {
-        FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                UserModel currentUserModel = task.getResult().toObject(UserModel.class);
-                String currentUserId = currentUserModel.getUserId();
-                Query query = FirebaseUtil.getChatroomMessages()
-                        .whereEqualTo("sender", currentUserId)
+
+                Query query = FirebaseUtil.getResReports()
                         .orderBy("timestamp", Query.Direction.DESCENDING);
-                if(currentUserModel.getUsertype().equals("Admin")) {
-                    query = FirebaseUtil.getChatroomMessages()
-                            .orderBy("timestamp", Query.Direction.DESCENDING);
-                }
-                FirestoreRecyclerOptions<ChatMessageModel> options = new FirestoreRecyclerOptions.Builder<ChatMessageModel>()
-                        .setQuery(query, ChatMessageModel.class)
+                FirestoreRecyclerOptions<ReportModel> options = new FirestoreRecyclerOptions.Builder<ReportModel>()
+                        .setQuery(query, ReportModel.class)
                         .build();
 
-                adapter = new ReportRecyclerAdapter(options, getContext());
+                adapter = new ResReportRecyclerAdapter(options, getContext());
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 recyclerView.setAdapter(adapter);
                 adapter.startListening();
-            }
-        });
     }
 
 

@@ -55,7 +55,6 @@ public class ReportRecyclerAdapter extends FirestoreRecyclerAdapter<ChatMessageM
             } else {
                 holder.lastMessageText.setText("Sent by: Unknown");
             }
-
             holder.lastMessageTime.setText("At: " + FirebaseUtil.datestampToString(model.getTimestamp()));
             holder.usernameText.setText(model.getMessage());
         });

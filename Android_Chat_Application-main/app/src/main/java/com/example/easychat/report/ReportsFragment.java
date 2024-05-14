@@ -82,11 +82,10 @@ public class ReportsFragment extends Fragment {
             if (task.isSuccessful()) {
                 UserModel currentUserModel = task.getResult().toObject(UserModel.class);
                 String currentUserId = currentUserModel.getUserId();
-                Query query = FirebaseUtil.getChatroomMessages()
-                        .whereEqualTo("sender", currentUserId)
+                Query query = FirebaseUtil.getReports()
                         .orderBy("timestamp", Query.Direction.DESCENDING);
                 if(currentUserModel.getUsertype().equals("Admin")) {
-                    query = FirebaseUtil.getChatroomMessages()
+                    query = FirebaseUtil.getReports()
                             .orderBy("timestamp", Query.Direction.DESCENDING);
                 }
                 FirestoreRecyclerOptions<ChatMessageModel> options = new FirestoreRecyclerOptions.Builder<ChatMessageModel>()

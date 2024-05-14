@@ -72,8 +72,11 @@ public class FirebaseUtil {
     public static CollectionReference getChatroomMessageReference(String chatroomId){
         return getChatroomReference(chatroomId).collection("chats");
     }
-    public static CollectionReference getChatroomMessages(){
+    public static CollectionReference getReports(){
         return FirebaseFirestore.getInstance().collection("reportselement");
+    }
+    public static CollectionReference getResReports(){
+        return FirebaseFirestore.getInstance().collection("reports");
     }
     public static CollectionReference getReportMessageReference(String reportId){
         return getReportReference(reportId).collection("chats");

@@ -181,9 +181,7 @@ public class AddReportFragment extends Fragment {
             AndroidUtil.showToast(getContext(), "Please select a date");
             return;
         }
-        setInProgress(true);
-        getOrCreateChatroomModel(text);
-        setInProgress(false);
+        sendMessageToUser(text);
 
         ReportsFragment reportsFragment = new ReportsFragment();
         FragmentManager fragmentManager = getParentFragmentManager();
@@ -194,14 +192,8 @@ public class AddReportFragment extends Fragment {
     }
 
     void sendMessageToUser(String message){
-        // Update the reportModel with the last message details
-        reportModel.setLastMessageTimestamp(Timestamp.now());
-        reportModel.setLastMessageSenderId(FirebaseUtil.currentUserId());
-        reportModel.setLastMessage(message);
-
-        FirebaseUtil.getReportReference(reportId).set(reportModel)
-                .addOnSuccessListener(aVoid -> {
-                     FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
+        setInProgress(true);
+        FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             UserModel currentUserModel = task.getResult().toObject(UserModel.class);
                             ChatMessageModel chatMessageModel = new ChatMessageModel(message, currentUserModel.getUserId(), userId, selectedDate);
@@ -219,30 +211,7 @@ public class AddReportFragment extends Fragment {
                             AndroidUtil.showToast(getContext(), "Failed to get current user details");
                         }
                     });
-                })
-                .addOnFailureListener(e -> {
-                    AndroidUtil.showToast(getContext(), "Failed to update report model");
-                });
-
         setInProgress(false);
-    }
-
-    void getOrCreateChatroomModel(String text){
-        FirebaseUtil.getReportReference(reportId).get().addOnCompleteListener(task -> {
-            if(task.isSuccessful()){
-                reportModel = task.getResult().toObject(ReportModel.class);
-                if(reportModel==null){
-                    reportModel = new ReportModel(
-                            reportId,
-                            Arrays.asList(FirebaseUtil.currentUserId(),userId),
-                            Timestamp.now(),
-                            ""
-                    );
-                    FirebaseUtil.getReportReference(reportId).set(reportModel);
-                }
-                sendMessageToUser(text);
-            }
-        });
     }
 
     void setInProgress(boolean inProgress){
