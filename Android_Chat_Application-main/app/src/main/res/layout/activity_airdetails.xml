@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".aircraft.AirDetailsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/my_primary"
+        android:padding="10dp"
+        android:id="@+id/toolbar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Technical Appeal"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginStart="10dp"
+            android:layout_toRightOf="@id/aircraft_img"
+            android:id="@+id/group_name"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aircraft"
+            android:textSize="16sp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@id/aircraft_img"
+            android:layout_below="@id/group_name"
+            android:id="@+id/air_name"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Serial number"
+            android:textSize="16sp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@id/aircraft_img"
+            android:layout_below="@id/air_name"
+            android:id="@+id/serial_number"
+            />
+
+
+        <include layout="@layout/air_pic_view"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/back_btn2"
+            android:id="@+id/aircraft_img"
+            />
+
+        <ImageButton
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/icon_back"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/white"
+            android:layout_centerVertical="true"
+            android:id="@+id/back_btn2"/>
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_above="@id/bottom_layout2"
+        android:id="@+id/chat_recycler_view2"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:padding="8dp"
+        android:id="@+id/bottom_layout2">
+
+        <EditText
+            android:id="@+id/chat_message_input2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toLeftOf="@id/message_send_btn2"
+            android:background="@drawable/edit_text_rounded_corner"
+            android:elevation="4dp"
+            android:hint="Write message here"
+            android:padding="10dp"
+            android:textColor="@color/black" />
+
+        <ImageButton
+            android:id="@+id/color_picker_btn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="55dp"
+            android:background="@color/color_option_3"
+            android:padding="8dp"
+            app:tint="@color/my_primary" />
+
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/icon_send"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/my_primary"
+            android:id="@+id/message_send_btn2"
+            android:padding="8dp"
+            android:layout_marginStart="15dp"
+            />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
+
+
+
+
+
+
+
+
