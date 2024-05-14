@@ -50,7 +50,7 @@ public class ResReportRecyclerAdapter extends FirestoreRecyclerAdapter<ReportMod
                 }
             }
             holder.lastMessageTime.setText("At: " + FirebaseUtil.datestampToString(model.getTimestamp()));
-            holder.usernameText.setText(model.getMessage());
+            holder.usernameText.setText(model.getReportId());
         });
     }
 
