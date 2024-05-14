@@ -993,6 +993,7 @@
             android:layout_height="wrap_content"
             android:text="Select Date"
             android:textSize="12sp"
+            android:textColor="@color/cardview_light_background"
             android:background="@drawable/btn_rounded_corner"
             android:backgroundTint="@color/my_primary"
             android:layout_gravity="center"

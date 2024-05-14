@@ -12,7 +12,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Adding report"
+            android:text="Write a report"
             android:gravity="center"
             android:layout_centerHorizontal="true"
             android:textSize="22sp"
@@ -32,6 +32,7 @@
         android:minHeight="250dp"
         android:padding="10dp"
         android:hint="text here ..."
+        android:textColorHint="@color/black"
         android:inputType="textMultiLine"
         android:textColor="@color/my_primary"
         android:layout_margin="10dp"
@@ -40,10 +41,11 @@
         android:minLines="3"/>
     <Spinner
         android:id="@+id/spinner"
+        android:background="@color/my_primary"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@drawable/btn_rounded_corner"
         android:padding="10dp"
         android:elevation="5dp"/>
 
@@ -68,9 +70,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Select Date"
-            android:textSize="12sp"
+            android:textColor="@color/cardview_light_background"
             android:background="@drawable/btn_rounded_corner"
-            android:backgroundTint="@color/my_primary"
+            android:textSize="12sp"
             android:layout_gravity="center"
             android:padding="10dp"/>
 
@@ -78,8 +80,8 @@
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_rounded_corner"
             android:text="Add report"
+            android:background="@drawable/btn_rounded_corner"
             android:textColor="@color/cardview_light_background"
             android:id="@+id/add_btn"/>
         <ImageButton
