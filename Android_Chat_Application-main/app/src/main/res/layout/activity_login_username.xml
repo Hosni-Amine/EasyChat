@@ -46,12 +46,17 @@
         android:layout_weight="5">
 
 
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username:"
+            android:id="@+id/totaldffdtimeb"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:hint="Username"
             android:inputType="text"
             android:layout_margin="10dp"
             android:background="@drawable/edit_text_rounded_corner"
@@ -60,11 +65,18 @@
             android:textColor="#4A39B2"
             android:id="@+id/login_username"
             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email:"
+            android:id="@+id/ftaldffdtimeb"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:hint="Email"
             android:textColorHint="@color/my_primary"
             android:layout_margin="10dp"
             android:background="@drawable/edit_text_rounded_corner"

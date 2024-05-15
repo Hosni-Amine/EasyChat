@@ -1,0 +1,1109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    tools:context=".DashboardFragment">
+
+    <RelativeLayout
+        android:background="@drawable/edit_text_rounded_corner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:padding="8dp"
+        android:layout_margin="10dp"
+        android:id="@+id/row0">
+
+        <ImageButton
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/icon_back"
+            android:layout_marginTop="15dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:id="@+id/back_btn"/>
+
+        <TextView
+            android:textAlignment="center"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text="Maintenance and performance log"
+            android:layout_centerHorizontal="true"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/my_primary"
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/other_username"
+            />
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/row0">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A/C REG:       ."
+                android:textSize="18sp"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="end"
+                android:layout_marginStart="15dp"
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/actype"
+                android:layout_gravity="end"
+                android:hint="Enter the flight number"
+                android:inputType="text"
+                android:textColor="@color/my_primary"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_text_rounded_corner"
+                android:elevation="10dp"
+                android:minLines="3"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Flight number:"
+                android:textSize="18sp"
+                android:layout_marginStart="15dp"
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/flightnumber"
+                android:hint="Enter the flight number"
+                android:inputType="text"
+                android:textColor="@color/my_primary"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_text_rounded_corner"
+                android:elevation="10dp"
+                android:minLines="3"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/as1"
+                android:background="@android:color/darker_gray" /> <!-- Divider/Bar between sections -->
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pre-flight/Transit check name:"
+                android:textSize="18sp"
+                android:layout_marginStart="15dp"
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/transitcheckname"
+                android:hint="Enter pre-flight/transit check name"
+                android:inputType="text"
+                android:textColor="@color/my_primary"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_text_rounded_corner"
+                android:elevation="10dp"
+                android:minLines="3"/>
+
+
+            <RelativeLayout
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <!-- Left RelativeLayout -->
+                <RelativeLayout
+                    android:id="@+id/as1"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="From station:"
+                        android:id="@+id/waa"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/waa"
+                        android:id="@+id/stationf"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+
+                <!-- Right RelativeLayout -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/as2"
+                    android:layout_alignRight="@+id/as1"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="To station: "
+                        android:id="@+id/wasa"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/wasa"
+                        android:id="@+id/stationt"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+
+                        android:layout_toStartOf="@+id/as2"
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <!-- Left RelativeLayout -->
+                <RelativeLayout
+                    android:id="@+id/as3"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Departure B/B:"
+                        android:id="@+id/waa1"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/waa1"
+                        android:id="@+id/departurebb"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+
+                <!-- Right RelativeLayout -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Departure A/B:"
+                        android:id="@+id/wasa1"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/wasa1"
+                        android:id="@+id/departureab"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/as1"
+                android:background="@android:color/darker_gray" /> <!-- Divider/Bar between sections -->
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Captain accptance name:"
+                android:textSize="18sp"
+                android:layout_marginStart="15dp"
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/acceptancename"
+                android:hint="Enter the captain accptance name"
+                android:inputType="text"
+                android:textColor="@color/my_primary"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_text_rounded_corner"
+                android:elevation="10dp"
+                android:minLines="3"/>
+
+
+            <RelativeLayout
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <!-- Left RelativeLayout -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Arrival A/B:"
+                        android:id="@+id/arrivalab"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/arrivalab"
+                        android:id="@+id/arrivalAb"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+                        android:hint="Station From Station "
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+
+                <!-- Right RelativeLayout -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Arrival A/B: "
+                        android:id="@+id/arrivalbb"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/arrivalbb"
+                        android:id="@+id/arrivalBb"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <!-- Left RelativeLayout -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total time B/B:"
+                        android:id="@+id/totaltimeb"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/totaltimeb"
+                        android:id="@+id/totaltimebb"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+
+                <!-- Right RelativeLayout -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Totale Time A/B"
+                        android:id="@+id/totaletimeabaa"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/totaletimeabaa"
+                        android:id="@+id/totaletimeab"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/as1"
+                android:background="@android:color/darker_gray" /> <!-- Divider/Bar between sections -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Time and fuel card N:"
+                android:textSize="18sp"
+                android:layout_marginStart="15dp"
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/timefuelcard"
+                android:inputType="text"
+                android:textColor="@color/my_primary"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_text_rounded_corner"
+                android:elevation="10dp"
+                android:minLines="3"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reading before refueling (Kg):"
+                android:textSize="18sp"
+                android:layout_marginStart="15dp"
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/readingbeforerefuel"
+                android:inputType="text"
+                android:textColor="@color/my_primary"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_text_rounded_corner"
+                android:elevation="10dp"
+                android:minLines="3"/>
+
+            <RelativeLayout
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <!-- Left RelativeLayout -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Uplift (kilogram):"
+                        android:id="@+id/arrivsdalAb"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/arrivsdalAb"
+                        android:id="@+id/UpliftK"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+                        android:hint="Station From Station "
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+
+                <!-- Right RelativeLayout -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Uplift (Liter): "
+                        android:id="@+id/arrisdvalbb"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/arrisdvalbb"
+                        android:id="@+id/upliftL"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reading at departure (Kg):"
+                android:textSize="18sp"
+                android:layout_marginStart="15dp"
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/readingatdeparture"
+                android:inputType="text"
+                android:textColor="@color/my_primary"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_text_rounded_corner"
+                android:elevation="10dp"
+                android:minLines="3"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+
+                android:text="Reading at arrival (Kg):"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/readingafterarrival"
+                android:inputType="text"
+                android:textColor="@color/my_primary"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_text_rounded_corner"
+                android:elevation="10dp"
+                android:minLines="3"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Actual dencity:"
+                android:textSize="18sp"
+                android:layout_marginStart="15dp"
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/actualdencity"
+                android:inputType="text"
+                android:textColor="@color/my_primary"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_text_rounded_corner"
+                android:elevation="10dp"
+                android:minLines="3"/>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/as1"
+                android:background="@android:color/darker_gray" /> <!-- Divider/Bar between sections -->
+
+            <RelativeLayout
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <!-- Left RelativeLayout -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Arrival engine1 (Qts): "
+                        android:id="@+id/arrivassslab"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/arrivassslab"
+                        android:id="@+id/engine1arrival"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+                        android:hint="Station From Station "
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+
+                <!-- Right RelativeLayout -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Arrival engine2 (Qts):"
+                        android:id="@+id/arrivaqsdfdqsdlbb"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/arrivaqsdfdqsdlbb"
+                        android:id="@+id/engine2arrival"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <!-- Left RelativeLayout -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Departure engine1:"
+                        android:id="@+id/totaldffdtimeb"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/totaldffdtimeb"
+                        android:id="@+id/engine1departure"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+
+                <!-- Right RelativeLayout -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Departure engine2"
+                        android:id="@+id/totaletisdsdmeabaa"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/totaletisdsdmeabaa"
+                        android:id="@+id/engine2departure"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <!-- Left RelativeLayout -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Uplift engine1:"
+                        android:id="@+id/totaldffdtcvvcimeb"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/totaldffdtcvvcimeb"
+                        android:id="@+id/engine1uplift"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+
+                <!-- Right RelativeLayout -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Uplift engine2"
+                        android:id="@+id/totaletsdisdsdmeabaa"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/totaletsdisdsdmeabaa"
+                        android:id="@+id/engine2uplift"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/as1"
+                android:background="@android:color/darker_gray" /> <!-- Divider/Bar between sections -->
+
+            <RelativeLayout
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <!-- Left RelativeLayout -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Check type: "
+                        android:id="@+id/sdqfgdsfg"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/sdqfgdsfg"
+                        android:id="@+id/checktype"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+                        android:hint="Station From Station "
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+
+                <!-- Right RelativeLayout -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Station:"
+                        android:id="@+id/arrivaqsdqsdlbb"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/arrivaqsdqsdlbb"
+                        android:id="@+id/station"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <!-- Left RelativeLayout -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Stemp/Licence N: "
+                        android:id="@+id/sdsdqsdqsdqsd"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/sdsdqsdqsdqsd"
+                        android:id="@+id/stemplicence"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+                        android:hint="Station From Station "
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+
+                <!-- Right RelativeLayout -->
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Doc reference:"
+                        android:id="@+id/sdqsdqsdqsd"
+                        android:textSize="18sp"
+                        android:layout_marginStart="15dp"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:layout_below="@+id/sdqsdqsdqsd"
+                        android:id="@+id/docref"
+                        android:layout_width="170dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edit_text_rounded_corner"
+                        android:elevation="10dp"
+                        android:inputType="text"
+                        android:minLines="3"
+                        android:padding="10dp"
+                        android:textColor="@color/my_primary" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+
+
+            <TextView
+                android:id="@+id/selected_date_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select time: "
+                android:textSize="18sp"
+                android:padding="10dp"
+                android:textColor="@android:color/black"/>
+
+
+            <Button
+                android:id="@+id/date_picker_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Date"
+                android:textSize="12sp"
+                android:textColor="@color/cardview_light_background"
+                android:background="@drawable/btn_rounded_corner"
+                android:backgroundTint="@color/my_primary"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:padding="10dp"/>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/as1"
+                android:background="@android:color/darker_gray" /> <!-- Divider/Bar between sections -->
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Pireps / Mareps:"
+                android:textSize="18sp"
+                android:layout_marginStart="15dp"
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/pirepsmareps"
+                android:inputType="text"
+                android:textColor="@color/my_primary"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_text_rounded_corner"
+                android:elevation="10dp"
+                android:minLines="3"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+
+                android:text="Actions taken:"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/actiontaken"
+                android:inputType="text"
+                android:textColor="@color/my_primary"
+                android:layout_margin="10dp"
+                android:background="@drawable/edit_text_rounded_corner"
+                android:elevation="10dp"
+                android:minLines="3"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/as1"
+                android:background="@android:color/darker_gray" /> <!-- Divider/Bar between sections -->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_margin="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_rounded_corner"
+                    android:text="Add report"
+                    android:textColor="@color/cardview_light_background"
+                    android:id="@+id/add_btn"/>
+
+                <ProgressBar
+                    android:layout_width="32dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="wrap_content"
+                    android:indeterminateTint="@color/my_primary"
+                    android:layout_gravity="center"
+                    android:id="@+id/profile_progress_bar"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

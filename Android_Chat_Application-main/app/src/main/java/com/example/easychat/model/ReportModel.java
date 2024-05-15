@@ -33,21 +33,22 @@ public class ReportModel {
     private String stampLicence;
     private String station;
     private String docRefDoc;
-    private Timestamp docRefTimeWithHours;
     private String pirepsMareps;
     private String actionTaken;
     private String senderId;
     private Timestamp timestamp;
+    private String actypeText;
 
     public ReportModel() {
     }
 
-    public ReportModel(String reportId, String preFlightCheckName, String flightNumber, String stationFrom, String stationTo, String departureBB, String departureAB, String captainAcceptance, String arrivalAB, String arrivalBB, String totalBB, String totalAB, String readingBeforeRefueling, String upliftKg, String upliftL, String readingAtDeparture, String readingAtArrival, String actualDencity, String upliftEng1, String upliftEng2, String readingAtDepartureEng1, String readingAtDepartureEng2, String readingAtArrivalEng1, String readingAtArrivalEng2, String inspectionCheckType, String stampLicence, String station, String docRefDoc, Timestamp docRefTimeWithHours, String pirepsMareps, String actionTaken, String senderId, Timestamp timestamp) {
-        this.reportId = reportId;
+    public ReportModel(String actypeText,String preFlightCheckName, String flightNumber, String stationFrom, String stationTo, String departureBB, String departureAB, String captainAcceptance, String arrivalAB, String arrivalBB, String totalBB, String totalAB, String readingBeforeRefueling, String upliftKg, String upliftL, String readingAtDeparture, String readingAtArrival, String actualDencity, String upliftEng1, String upliftEng2, String readingAtDepartureEng1, String readingAtDepartureEng2, String readingAtArrivalEng1, String readingAtArrivalEng2, String inspectionCheckType, String stampLicence, String station, String docRefDoc, String pirepsMareps, String actionTaken, String senderId, Timestamp timestamp) {
+
         this.preFlightCheckName = preFlightCheckName;
         this.flightNumber = flightNumber;
         this.stationFrom = stationFrom;
         this.stationTo = stationTo;
+        this.actypeText=actypeText;
         this.departureBB = departureBB;
         this.departureAB = departureAB;
         this.captainAcceptance = captainAcceptance;
@@ -58,22 +59,25 @@ public class ReportModel {
         this.readingBeforeRefueling = readingBeforeRefueling;
         this.upliftKg = upliftKg;
         this.upliftL = upliftL;
+
         this.readingAtDeparture = readingAtDeparture;
         this.readingAtArrival = readingAtArrival;
         this.actualDencity = actualDencity;
         this.upliftEng1 = upliftEng1;
         this.upliftEng2 = upliftEng2;
+
         this.readingAtDepartureEng1 = readingAtDepartureEng1;
         this.readingAtDepartureEng2 = readingAtDepartureEng2;
         this.readingAtArrivalEng1 = readingAtArrivalEng1;
         this.readingAtArrivalEng2 = readingAtArrivalEng2;
         this.inspectionCheckType = inspectionCheckType;
+
         this.stampLicence = stampLicence;
         this.station = station;
         this.docRefDoc = docRefDoc;
-        this.docRefTimeWithHours = docRefTimeWithHours;
         this.pirepsMareps = pirepsMareps;
         this.actionTaken = actionTaken;
+
         this.senderId = senderId;
         this.timestamp = timestamp;
     }
@@ -190,10 +194,6 @@ public class ReportModel {
 
     public String getDocRefDoc() {
         return docRefDoc;
-    }
-
-    public Timestamp getDocRefTimeWithHours() {
-        return docRefTimeWithHours;
     }
 
     public String getPirepsMareps() {

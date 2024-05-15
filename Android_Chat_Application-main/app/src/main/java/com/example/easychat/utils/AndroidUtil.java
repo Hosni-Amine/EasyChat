@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.easychat.model.Aircraft;
+import com.example.easychat.model.ReportModel;
 import com.example.easychat.model.UserModel;
 
 public class AndroidUtil {
@@ -38,7 +39,6 @@ public class AndroidUtil {
         intent.putExtra("userId",model.getUserId());
         intent.putExtra("fcmToken",model.getFcmToken());
     }
-
     public static UserModel getUserModelFromIntent(Intent intent){
         UserModel userModel = new UserModel();
         userModel.setUsername(intent.getStringExtra("username"));

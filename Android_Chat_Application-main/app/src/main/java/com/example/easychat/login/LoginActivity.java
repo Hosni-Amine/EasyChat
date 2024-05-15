@@ -23,7 +23,6 @@ import com.hbb20.CountryCodePicker;
 
 public class LoginActivity extends AppCompatActivity {
 
-    CountryCodePicker countryCodePicker;
     EditText passwordInput;
     EditText phoneInput;
     Button letMeInBtn;
