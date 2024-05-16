@@ -1,7 +1,5 @@
 package com.example.easychat.report;
 
-import android.app.DownloadManager;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,20 +14,14 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import com.example.easychat.DashboardFragment;
+import com.example.easychat.user_chat.DashboardFragment;
 import com.example.easychat.R;
-import com.example.easychat.adapter.ChatRecyclerAdapter;
-import com.example.easychat.adapter.RecentChatRecyclerAdapter;
 import com.example.easychat.adapter.ReportRecyclerAdapter;
 import com.example.easychat.model.ChatMessageModel;
-import com.example.easychat.model.ChatroomModel;
-import com.example.easychat.model.ReportModel;
 import com.example.easychat.model.UserModel;
 import com.example.easychat.utils.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 
 public class ReportsFragment extends Fragment {
 

@@ -20,10 +20,10 @@ import com.example.easychat.utils.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-public class SearchAircraftRecyclerAdapter extends FirestoreRecyclerAdapter<Aircraft, SearchAircraftRecyclerAdapter.AircraftViewHolder>  {
+public class RecentChatAircraftRecyclerAdapter extends FirestoreRecyclerAdapter<Aircraft, RecentChatAircraftRecyclerAdapter.AircraftViewHolder>  {
     private Context context;
 
-    public SearchAircraftRecyclerAdapter(@NonNull FirestoreRecyclerOptions<Aircraft> options, Context context) {
+    public RecentChatAircraftRecyclerAdapter(@NonNull FirestoreRecyclerOptions<Aircraft> options, Context context) {
         super(options);
         this.context = context;
 

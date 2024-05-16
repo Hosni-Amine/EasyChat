@@ -2,7 +2,6 @@ package com.example.easychat.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,30 +9,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easychat.R;
-import com.example.easychat.model.ChatMessageModel;
 import com.example.easychat.model.ReportModel;
 import com.example.easychat.model.UserModel;
-import com.example.easychat.report.CRMActivity;
-import com.example.easychat.report.ResReportFragment;
-import com.example.easychat.report.ViewcrmFragment;
-import com.example.easychat.user_chat.ChatActivity;
+import com.example.easychat.CRMreports.CRMViewActivity;
 import com.example.easychat.utils.AndroidUtil;
 import com.example.easychat.utils.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 
-public class ResReportRecyclerAdapter extends FirestoreRecyclerAdapter<ReportModel, ResReportRecyclerAdapter.ChatroomModelViewHolder> {
+public class CRMReportRecyclerAdapter extends FirestoreRecyclerAdapter<ReportModel, CRMReportRecyclerAdapter.ChatroomModelViewHolder> {
 
     Context context;
 
-    public ResReportRecyclerAdapter(@NonNull FirestoreRecyclerOptions<ReportModel> options, Context context) {
+    public CRMReportRecyclerAdapter(@NonNull FirestoreRecyclerOptions<ReportModel> options, Context context) {
         super(options);
         this.context = context;
     }
@@ -62,7 +54,7 @@ public class ResReportRecyclerAdapter extends FirestoreRecyclerAdapter<ReportMod
             holder.lastMessageTime.setText("At: " + model.getTimestamp());
             holder.usernameText.setText(model.getActionTaken());
             holder.itemView.setOnClickListener(v -> {
-                Intent intent = new Intent(context, CRMActivity.class);
+                Intent intent = new Intent(context, CRMViewActivity.class);
                 AndroidUtil.passReportModelAsIntent(intent,model);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);

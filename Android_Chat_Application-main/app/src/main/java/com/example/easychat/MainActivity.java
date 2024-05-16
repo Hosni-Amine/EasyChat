@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 
-import com.example.easychat.aircraft.SearchAircraftFragment;
+import com.example.easychat.aircraft.AircraftFragment;
 import com.example.easychat.report.ReportsFragment;
 import com.example.easychat.user_chat.ChatFragment;
+import com.example.easychat.user_chat.DashboardFragment;
+import com.example.easychat.user_chat.ProfileFragment;
 import com.example.easychat.user_chat.SearchUserActivity;
 import com.example.easychat.utils.FirebaseUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     ProfileFragment profileFragment;
     DashboardFragment homeFragment;
     ReportsFragment reportsfragment;
-    SearchAircraftFragment searchAircraftFragment;
+    AircraftFragment searchAircraftFragment;
 
 
     @Override
@@ -35,10 +37,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         chatFragment = new ChatFragment();
-        reportsfragment = new ReportsFragment();
         homeFragment = new DashboardFragment();
-        profileFragment = new ProfileFragment();
-        searchAircraftFragment = new SearchAircraftFragment();
+        searchAircraftFragment = new AircraftFragment();
 
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);

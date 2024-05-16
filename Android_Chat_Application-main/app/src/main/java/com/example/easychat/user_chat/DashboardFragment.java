@@ -1,4 +1,4 @@
-package com.example.easychat;
+package com.example.easychat.user_chat;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,29 +14,23 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.easychat.R;
+import com.example.easychat.SplashActivity;
 import com.example.easychat.model.UserModel;
 import com.example.easychat.report.ReportsFragment;
-import com.example.easychat.report.ResReportFragment;
+import com.example.easychat.CRMreports.CRMReportFragment;
 import com.example.easychat.utils.AndroidUtil;
 import com.example.easychat.utils.FirebaseUtil;
-import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
-import androidx.cardview.widget.CardView;
+
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
 
 public class DashboardFragment extends Fragment {
     private TextView dprofile_username, dprofile_email, dprofile_phone, dprofile_type;
@@ -84,7 +78,7 @@ public class DashboardFragment extends Fragment {
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
                         FirebaseUtil.logout();
-                        Intent intent = new Intent(getContext(),SplashActivity.class);
+                        Intent intent = new Intent(getContext(), SplashActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                     }
@@ -117,7 +111,7 @@ public class DashboardFragment extends Fragment {
         rereports_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ResReportFragment profileFragment = new ResReportFragment();
+                CRMReportFragment profileFragment = new CRMReportFragment();
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.main_frame_layout, profileFragment);

@@ -1,21 +1,17 @@
-package com.example.easychat.report;
+package com.example.easychat.CRMreports;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.easychat.R;
 import com.example.easychat.model.ReportModel;
 import com.example.easychat.utils.AndroidUtil;
 
-public class CRMActivity extends AppCompatActivity {
+public class CRMViewActivity extends AppCompatActivity {
 
 
     ImageButton backBtn;
@@ -37,7 +33,6 @@ public class CRMActivity extends AppCompatActivity {
         reportModel = AndroidUtil.getReportModelFromIntent(getIntent());
 
         ViewGroup parentLayout = findViewById(R.id.row0); // Replace with the ID of the parent layout
-
 
         backBtn = findViewById(R.id.back_btn);
 

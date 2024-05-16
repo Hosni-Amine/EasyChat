@@ -1,7 +1,5 @@
-package com.example.easychat.report;
+package com.example.easychat.CRMreports;
 
-import android.app.DownloadManager;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,28 +14,21 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import com.example.easychat.DashboardFragment;
+import com.example.easychat.user_chat.DashboardFragment;
 import com.example.easychat.R;
-import com.example.easychat.adapter.ChatRecyclerAdapter;
-import com.example.easychat.adapter.RecentChatRecyclerAdapter;
-import com.example.easychat.adapter.ResReportRecyclerAdapter;
-import com.example.easychat.model.ChatMessageModel;
-import com.example.easychat.model.ChatroomModel;
+import com.example.easychat.adapter.CRMReportRecyclerAdapter;
 import com.example.easychat.model.ReportModel;
-import com.example.easychat.model.UserModel;
 import com.example.easychat.utils.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 
-public class ResReportFragment extends Fragment {
+public class CRMReportFragment extends Fragment {
 
     RecyclerView recyclerView;
-    ResReportRecyclerAdapter adapter;
+    CRMReportRecyclerAdapter adapter;
     ImageButton backBtn;
 
-    public ResReportFragment() {
+    public CRMReportFragment() {
     }
 
     @Override
@@ -50,7 +41,7 @@ public class ResReportFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                AddResReportFragment addReportFragment = new AddResReportFragment();
+                AddCRMReportFragment addReportFragment = new AddCRMReportFragment();
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.main_frame_layout, addReportFragment);
@@ -84,7 +75,7 @@ public class ResReportFragment extends Fragment {
                         .setQuery(query, ReportModel.class)
                         .build();
 
-                adapter = new ResReportRecyclerAdapter(options, getContext());
+                adapter = new CRMReportRecyclerAdapter(options, getContext());
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 recyclerView.setAdapter(adapter);
                 adapter.startListening();

@@ -1,11 +1,9 @@
-package com.example.easychat.report;
+package com.example.easychat.CRMreports;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -14,8 +12,6 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -23,29 +19,17 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.easychat.R;
-import com.example.easychat.model.ChatMessageModel;
-import com.example.easychat.model.ChatroomModel;
 import com.example.easychat.model.ReportModel;
-import com.example.easychat.model.UserModel;
+import com.example.easychat.report.ReportsFragment;
 import com.example.easychat.utils.AndroidUtil;
 import com.example.easychat.utils.FirebaseUtil;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.UserDataReader;
-import com.google.firebase.firestore.auth.User;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.List;
 
 
-public class AddResReportFragment extends Fragment {
+public class AddCRMReportFragment extends Fragment {
 
     ImageButton backBtn;
     Button add_Btn;
@@ -62,7 +46,7 @@ public class AddResReportFragment extends Fragment {
             docRefDocInput,pirepsmareps,actiontaken,actype;
     Timestamp selectedDate;
 
-    public AddResReportFragment() {
+    public AddCRMReportFragment() {
 
     }
 
@@ -226,8 +210,9 @@ public class AddResReportFragment extends Fragment {
                     "10:30", "10:45", "12:15", "12:30", "Visual Inspection",
                     "Stamped", "Station C", "DocRef123", "No PIREPs or MAREPs", "Actions taken",
                     FirebaseUtil.currentUserId(),FirebaseUtil.datestampToString(selectedDate));
+
                 FirebaseFirestore.getInstance().collection("reports").add(reportModel);
-                ResReportFragment reportsFragment = new ResReportFragment();
+                CRMReportFragment reportsFragment = new CRMReportFragment();
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.main_frame_layout, reportsFragment);

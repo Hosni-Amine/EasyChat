@@ -8,19 +8,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.easychat.R;
-import com.example.easychat.adapter.SearchAircraftRecyclerAdapter;
+import com.example.easychat.adapter.RecentChatAircraftRecyclerAdapter;
 import com.example.easychat.model.Aircraft;
 import com.example.easychat.utils.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.Query;
 
-public class SearchAircraftActivity extends AppCompatActivity {
+public class GroupChatAircraftActivity extends AppCompatActivity {
 
     EditText searchInput;
     ImageButton searchButton;
     ImageButton backButton;
     RecyclerView recyclerView;
-    SearchAircraftRecyclerAdapter adapter;
+    RecentChatAircraftRecyclerAdapter adapter;
     Query initialQuery;
 
     @Override
@@ -44,7 +44,7 @@ public class SearchAircraftActivity extends AppCompatActivity {
         FirestoreRecyclerOptions<Aircraft> options = new FirestoreRecyclerOptions.Builder<Aircraft>()
                 .setQuery(initialQuery, Aircraft.class).build();
 
-        adapter = new SearchAircraftRecyclerAdapter(options, getApplicationContext());
+        adapter = new RecentChatAircraftRecyclerAdapter(options, getApplicationContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         adapter.startListening();
