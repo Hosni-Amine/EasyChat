@@ -48,7 +48,6 @@ import java.util.List;
 public class AddResReportFragment extends Fragment {
 
     ImageButton backBtn;
-    ReportModel reportModel;
     Button add_Btn;
     ProgressBar progressBar;
     private TextView selectedDateTextView;
@@ -226,7 +225,7 @@ public class AddResReportFragment extends Fragment {
                     "12:30", "15:00", "0.85", "2000 lbs", "2200 lbs",
                     "10:30", "10:45", "12:15", "12:30", "Visual Inspection",
                     "Stamped", "Station C", "DocRef123", "No PIREPs or MAREPs", "Actions taken",
-                    FirebaseUtil.currentUserId(), selectedDate);
+                    FirebaseUtil.currentUserId(),FirebaseUtil.datestampToString(selectedDate));
                 FirebaseFirestore.getInstance().collection("reports").add(reportModel);
                 ResReportFragment reportsFragment = new ResReportFragment();
                 FragmentManager fragmentManager = getParentFragmentManager();

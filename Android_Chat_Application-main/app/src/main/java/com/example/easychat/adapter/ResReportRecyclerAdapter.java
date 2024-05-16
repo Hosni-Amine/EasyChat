@@ -19,6 +19,7 @@ import com.example.easychat.R;
 import com.example.easychat.model.ChatMessageModel;
 import com.example.easychat.model.ReportModel;
 import com.example.easychat.model.UserModel;
+import com.example.easychat.report.CRMActivity;
 import com.example.easychat.report.ResReportFragment;
 import com.example.easychat.report.ViewcrmFragment;
 import com.example.easychat.user_chat.ChatActivity;
@@ -44,7 +45,7 @@ public class ResReportRecyclerAdapter extends FirestoreRecyclerAdapter<ReportMod
                 UserModel currentUserModel = task.getResult().toObject(UserModel.class);
                 if (model.getSenderId().equals(currentUserModel.getUserId())) {
                     holder.lastMessageText.setText("Sent by you");
-                } else if(model.getSenderId().equals(currentUserModel.getUserId())){
+                } else {
                     FirebaseUtil.allUserCollectionReference().document(model.getSenderId()).get()
                             .addOnCompleteListener(userTask -> {
                                 if (userTask.isSuccessful()) {
@@ -58,8 +59,14 @@ public class ResReportRecyclerAdapter extends FirestoreRecyclerAdapter<ReportMod
             } else {
                 holder.lastMessageText.setText("Sent by: Unknown");
             }
-            holder.lastMessageTime.setText("At: " + FirebaseUtil.datestampToString(model.getTimestamp()));
+            holder.lastMessageTime.setText("At: " + model.getTimestamp());
             holder.usernameText.setText(model.getActionTaken());
+            holder.itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(context, CRMActivity.class);
+                AndroidUtil.passReportModelAsIntent(intent,model);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            });
         });
     }
 

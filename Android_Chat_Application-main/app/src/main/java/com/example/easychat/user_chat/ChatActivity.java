@@ -71,8 +71,8 @@ public class ChatActivity extends AppCompatActivity {
         String[] options = {"Technician", "Admin", "Airport Commander"};
 
         otherUser = AndroidUtil.getUserModelFromIntent(getIntent());
-        chatroomId = FirebaseUtil.getChatroomId(FirebaseUtil.currentUserId(),otherUser.getUserId());
 
+        chatroomId = FirebaseUtil.getChatroomId(FirebaseUtil.currentUserId(),otherUser.getUserId());
         messageInput = findViewById(R.id.chat_message_input);
         sendMessageBtn = findViewById(R.id.message_send_btn);
         backBtn = findViewById(R.id.back_btn);
@@ -84,6 +84,7 @@ public class ChatActivity extends AppCompatActivity {
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         userSpinner.setAdapter(spinnerAdapter);
         FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
+
             UserModel currentUserModel = task.getResult().toObject(UserModel.class);
 
             if (currentUserModel.getUsertype().equals("Admin")) {

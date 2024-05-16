@@ -36,13 +36,13 @@ public class ReportModel {
     private String pirepsMareps;
     private String actionTaken;
     private String senderId;
-    private Timestamp timestamp;
+    private String timestamp;
     private String actypeText;
 
     public ReportModel() {
     }
 
-    public ReportModel(String actypeText,String preFlightCheckName, String flightNumber, String stationFrom, String stationTo, String departureBB, String departureAB, String captainAcceptance, String arrivalAB, String arrivalBB, String totalBB, String totalAB, String readingBeforeRefueling, String upliftKg, String upliftL, String readingAtDeparture, String readingAtArrival, String actualDencity, String upliftEng1, String upliftEng2, String readingAtDepartureEng1, String readingAtDepartureEng2, String readingAtArrivalEng1, String readingAtArrivalEng2, String inspectionCheckType, String stampLicence, String station, String docRefDoc, String pirepsMareps, String actionTaken, String senderId, Timestamp timestamp) {
+    public ReportModel(String actypeText,String preFlightCheckName, String flightNumber, String stationFrom, String stationTo, String departureBB, String departureAB, String captainAcceptance, String arrivalAB, String arrivalBB, String totalBB, String totalAB, String readingBeforeRefueling, String upliftKg, String upliftL, String readingAtDeparture, String readingAtArrival, String actualDencity, String upliftEng1, String upliftEng2, String readingAtDepartureEng1, String readingAtDepartureEng2, String readingAtArrivalEng1, String readingAtArrivalEng2, String inspectionCheckType, String stampLicence, String station, String docRefDoc, String pirepsMareps, String actionTaken, String senderId, String timestamp) {
 
         this.preFlightCheckName = preFlightCheckName;
         this.flightNumber = flightNumber;
@@ -118,6 +118,9 @@ public class ReportModel {
 
     public String getArrivalAB() {
         return arrivalAB;
+    }
+    public String getActypeText() {
+        return actypeText;
     }
 
     public String getArrivalBB() {
@@ -208,7 +211,7 @@ public class ReportModel {
         return senderId;
     }
 
-    public Timestamp getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 }

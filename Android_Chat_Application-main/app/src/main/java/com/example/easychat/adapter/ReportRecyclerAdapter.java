@@ -41,7 +41,7 @@ public class ReportRecyclerAdapter extends FirestoreRecyclerAdapter<ChatMessageM
                 UserModel currentUserModel = task.getResult().toObject(UserModel.class);
                 if (model.getSenderId().equals(currentUserModel.getUserId())) {
                     holder.lastMessageText.setText("Sent by you");
-                } else if(model.getSender().equals(currentUserModel.getUserId())){
+                } else {
                     FirebaseUtil.allUserCollectionReference().document(model.getSenderId()).get()
                             .addOnCompleteListener(userTask -> {
                                 if (userTask.isSuccessful()) {
