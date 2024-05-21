@@ -68,13 +68,11 @@ public class CRMReportFragment extends Fragment {
     }
 
     void setupRecyclerView() {
-
                 Query query = FirebaseUtil.getResReports()
                         .orderBy("timestamp", Query.Direction.DESCENDING);
                 FirestoreRecyclerOptions<ReportModel> options = new FirestoreRecyclerOptions.Builder<ReportModel>()
                         .setQuery(query, ReportModel.class)
                         .build();
-
                 adapter = new CRMReportRecyclerAdapter(options, getContext());
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 recyclerView.setAdapter(adapter);

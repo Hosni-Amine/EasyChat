@@ -48,7 +48,6 @@
                     android:id="@+id/left"
                     android:layout_width="12dp"
                     android:layout_height="12dp"
-                    android:background="@drawable/danger_warning"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="1dp"/>
             </LinearLayout>

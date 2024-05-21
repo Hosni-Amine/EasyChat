@@ -32,7 +32,6 @@ public class CRMViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_crmactivity);
         reportModel = AndroidUtil.getReportModelFromIntent(getIntent());
 
-        ViewGroup parentLayout = findViewById(R.id.row0); // Replace with the ID of the parent layout
 
         backBtn = findViewById(R.id.back_btn);
 
@@ -63,7 +62,7 @@ public class CRMViewActivity extends AppCompatActivity {
         readingAtDepartureEng1Input = findViewById(R.id.engine1departure);
         readingAtDepartureEng2Input = findViewById(R.id.engine2departure);
         readingAtArrivalEng1Input = findViewById(R.id.engine1arrival);
-        readingAtArrivalEng2Input = findViewById(R.id.engine1arrival);
+        readingAtArrivalEng2Input = findViewById(R.id.engine2arrival);
         inspectionCheckTypeInput = findViewById(R.id.checktype);
         stampLicenceInput = findViewById(R.id.stemplicence);
         stationInput = findViewById(R.id.station);

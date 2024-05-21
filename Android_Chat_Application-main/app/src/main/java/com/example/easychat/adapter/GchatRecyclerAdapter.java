@@ -53,7 +53,8 @@ public class GchatRecyclerAdapter extends FirestoreRecyclerAdapter<ChatMessageMo
             else{
                 holder.rightColorLayout.setBackgroundResource(R.drawable.nomal_warning);
             }
-        }else{
+        }
+        else{
             holder.rightChatLayout.setVisibility(View.GONE);
             holder.leftChatLayout.setVisibility(View.VISIBLE);
 
@@ -61,18 +62,18 @@ public class GchatRecyclerAdapter extends FirestoreRecyclerAdapter<ChatMessageMo
             holder.leftSenderName.setText(model.getSender()+" ("+FirebaseUtil.datestampToString(model.getTimestamp())+")");
             if(model.getColor()==1)
             {
-                holder.rightColorLayout.setBackgroundResource(R.drawable.danger_warning);
+                holder.leftColorLayout.setBackgroundResource(R.drawable.danger_warning);
             }
             else if(model.getColor()==2)
             {
-                holder.rightColorLayout.setBackgroundResource(R.drawable.warning_warning);
+                holder.leftColorLayout.setBackgroundResource(R.drawable.warning_warning);
             }
             else if(model.getColor()==3)
             {
-                holder.rightColorLayout.setBackgroundResource(R.drawable.standard_warning);
+                holder.leftColorLayout.setBackgroundResource(R.drawable.standard_warning);
             }
             else{
-                holder.rightColorLayout.setBackgroundResource(R.drawable.nomal_warning);
+                holder.leftColorLayout.setBackgroundResource(R.drawable.nomal_warning);
             }
         }
     }

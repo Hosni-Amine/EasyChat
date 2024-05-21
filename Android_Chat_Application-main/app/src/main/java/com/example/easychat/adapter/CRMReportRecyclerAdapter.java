@@ -36,15 +36,15 @@ public class CRMReportRecyclerAdapter extends FirestoreRecyclerAdapter<ReportMod
             if (task.isSuccessful()) {
                 UserModel currentUserModel = task.getResult().toObject(UserModel.class);
                 if (model.getSenderId().equals(currentUserModel.getUserId())) {
-                    holder.lastMessageText.setText("Sent by you");
+                    holder.lastMessageText.setText("Written by you");
                 } else {
                     FirebaseUtil.allUserCollectionReference().document(model.getSenderId()).get()
                             .addOnCompleteListener(userTask -> {
                                 if (userTask.isSuccessful()) {
                                     UserModel senderUser = userTask.getResult().toObject(UserModel.class);
-                                    holder.lastMessageText.setText("Sent by: " + senderUser.getUsername());
+                                    holder.lastMessageText.setText("Written by: " + senderUser.getUsername());
                                 } else {
-                                    holder.lastMessageText.setText("Sent by: Unknown");
+                                    holder.lastMessageText.setText("Written by: Unknown");
                                 }
                             });
                 }
@@ -52,7 +52,7 @@ public class CRMReportRecyclerAdapter extends FirestoreRecyclerAdapter<ReportMod
                 holder.lastMessageText.setText("Sent by: Unknown");
             }
             holder.lastMessageTime.setText("At: " + model.getTimestamp());
-            holder.usernameText.setText(model.getActionTaken());
+            holder.usernameText.setText(model.getActypeText());
             holder.itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(context, CRMViewActivity.class);
                 AndroidUtil.passReportModelAsIntent(intent,model);

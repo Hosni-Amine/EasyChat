@@ -16,6 +16,9 @@
         android:theme="@style/Theme.EasyChat"
         tools:targetApi="31">
         <activity
+            android:name=".CRMreports.EditCRMReportActivity"
+            android:exported="false" />
+        <activity
             android:name=".CRMreports.CRMViewActivity"
             android:exported="false" />
         <activity

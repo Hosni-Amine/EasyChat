@@ -2,53 +2,68 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     tools:context=".CRMreports.CRMViewActivity">
 
     <RelativeLayout
-        android:background="@drawable/edit_text_rounded_corner"
+        android:id="@+id/row0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:padding="8dp"
-        android:layout_margin="10dp"
-        android:id="@+id/row0">
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/edit_text_rounded_corner"
+        android:padding="8dp">
 
         <ImageButton
+            android:id="@+id/back_btn"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/icon_back"
-            android:layout_marginTop="15dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
             android:layout_centerVertical="true"
             android:layout_gravity="center"
-            android:id="@+id/back_btn"/>
+            android:layout_marginTop="15dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/icon_back" />
 
         <TextView
-            android:textAlignment="center"
+            android:id="@+id/other_username"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:text="Maintenance and performance log"
             android:layout_centerHorizontal="true"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/my_primary"
             android:layout_marginStart="10dp"
-            android:id="@+id/other_username"
-            />
-        <TextView
-            android:layout_below="@+id/other_username"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/selected_date_text_view"
+            android:text="Maintenance and performance log"
             android:textAlignment="center"
+            android:textColor="@color/my_primary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/selected_date_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select time: "
-            android:textSize="15sp"
+            android:layout_below="@+id/other_username"
+            android:layout_centerHorizontal="true"
             android:padding="2dp"
-            android:textColor="@android:color/black"/>
+            android:text="Select time: "
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/add_report_btn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/editcrm" />
+
     </RelativeLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -74,7 +89,6 @@
                 android:padding="10dp"
                 android:id="@+id/actype"
                 android:layout_gravity="end"
-                android:hint="Enter the flight number"
                 android:inputType="text"
                 android:textColor="@color/my_primary"
                 android:layout_margin="10dp"
@@ -124,7 +138,6 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:id="@+id/transitcheckname"
-                android:hint="Enter pre-flight/transit check name"
                 android:inputType="text"
                 android:textColor="@color/my_primary"
                 android:layout_margin="10dp"
@@ -302,7 +315,6 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:id="@+id/acceptancename"
-                android:hint="Enter the captain accptance name"
                 android:inputType="text"
                 android:textColor="@color/my_primary"
                 android:layout_margin="10dp"
@@ -343,7 +355,6 @@
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/edit_text_rounded_corner"
                         android:elevation="10dp"
-                        android:hint="Station From Station "
                         android:inputType="text"
                         android:minLines="3"
                         android:padding="10dp"
@@ -534,7 +545,6 @@
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/edit_text_rounded_corner"
                         android:elevation="10dp"
-                        android:hint="Station From Station "
                         android:inputType="text"
                         android:minLines="3"
                         android:padding="10dp"
@@ -675,7 +685,6 @@
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/edit_text_rounded_corner"
                         android:elevation="10dp"
-                        android:hint="Station From Station "
                         android:inputType="text"
                         android:minLines="3"
                         android:padding="10dp"
@@ -896,7 +905,6 @@
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/edit_text_rounded_corner"
                         android:elevation="10dp"
-                        android:hint="Station From Station "
                         android:inputType="text"
                         android:minLines="3"
                         android:padding="10dp"
@@ -969,7 +977,6 @@
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/edit_text_rounded_corner"
                         android:elevation="10dp"
-                        android:hint="Station From Station "
                         android:inputType="text"
                         android:minLines="3"
                         android:padding="10dp"
