@@ -9,10 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.example.easychat.CRMreports.CRMViewActivity;
+import com.example.easychat.CRMreports.EditCRMReportActivity;
 import com.example.easychat.MainActivity;
 import com.example.easychat.R;
+import com.example.easychat.SplashActivity;
 import com.example.easychat.model.UserModel;
+import com.example.easychat.utils.AndroidUtil;
 import com.example.easychat.utils.FirebaseUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,9 +25,11 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class LoginUsernameActivity extends AppCompatActivity {
 
+    TextView logoutBtn;
     EditText usernameInput;
     EditText emailInput;
     Button letMeInBtn;
@@ -35,6 +42,7 @@ public class LoginUsernameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_username);
+        logoutBtn = findViewById(R.id.logout_btn);
         usernameInput = findViewById(R.id.login_username);
         emailInput = findViewById(R.id.login_email);
         letMeInBtn = findViewById(R.id.login_let_me_in_btn);
@@ -47,6 +55,21 @@ public class LoginUsernameActivity extends AppCompatActivity {
         letMeInBtn.setOnClickListener((v -> {
             setUsername();
         }));
+
+        logoutBtn.setOnClickListener((v)->{
+            FirebaseMessaging.getInstance().deleteToken().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                        FirebaseUtil.logout();
+                        Intent intent = new Intent(LoginUsernameActivity.this, SplashActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    }
+                }
+            });
+
+        });
     }
 
     void setUsername(){
@@ -91,7 +114,6 @@ public class LoginUsernameActivity extends AppCompatActivity {
             }
         });
     }
-
     void getUsername(){
         FirebaseUtil.currentUserDetails().get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -126,7 +148,6 @@ public class LoginUsernameActivity extends AppCompatActivity {
             }
         });
     }
-
     void setInProgress(boolean inProgress){
         if(inProgress){
             progressBar.setVisibility(View.VISIBLE);

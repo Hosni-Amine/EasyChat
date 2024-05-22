@@ -22,6 +22,7 @@ import com.example.easychat.CRMreports.CRMViewActivity;
 import com.example.easychat.CRMreports.EditCRMReportActivity;
 import com.example.easychat.R;
 import com.example.easychat.SplashActivity;
+import com.example.easychat.login.LoginUsernameActivity;
 import com.example.easychat.model.UserModel;
 import com.example.easychat.report.ReportsFragment;
 import com.example.easychat.CRMreports.CRMReportFragment;
@@ -30,6 +31,7 @@ import com.example.easychat.utils.FirebaseUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.storage.internal.Slashes;
 
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -133,38 +135,34 @@ public class DashboardFragment extends Fragment {
         return view;
     }
 
-    void getUserData(){
-
+    void getUserData() {
         FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
-            currentUserModel = task.getResult().toObject(UserModel.class);
-            if(currentUserModel==null || currentUserModel.getUsername()==null || currentUserModel.getUsername()=="" || currentUserModel.getEmail()==null || currentUserModel.getEmail()==""){
-                FirebaseMessaging.getInstance().deleteToken().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            FirebaseUtil.logout();
-                            Intent intent = new Intent(getContext(), SplashActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
-                        }
-                    }
-                });
+            if (task.isSuccessful()) {
+                currentUserModel = task.getResult().toObject(UserModel.class);
+                if (currentUserModel == null || currentUserModel.getUsername() == null || currentUserModel.getUsername().isEmpty() || currentUserModel.getEmail() == null || currentUserModel.getEmail().isEmpty()) {
+                    AndroidUtil.showToast(getContext(), "Account registration was not finished");
+                    FirebaseUtil.logout();
+                    Intent intent = new Intent(getContext(), SplashActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                } else {
+                    dprofile_username.setText(currentUserModel.getUsername());
+                    dprofile_phone.setText(currentUserModel.getPhone());
+                    dprofile_email.setText(currentUserModel.getEmail());
+                    dprofile_type.setText("(" + currentUserModel.getUsertype() + ")");
+
+                    FirebaseUtil.getCurrentProfilePicStorageRef().getDownloadUrl()
+                            .addOnCompleteListener(picTask -> {
+                                if (picTask.isSuccessful()) {
+                                    Uri uri = picTask.getResult();
+                                    AndroidUtil.setProfilePic(getContext(), uri, profile_image);
+                                }
+                            });
+                }
+            } else {
+                AndroidUtil.showToast(getContext(), "Failed to retrieve user data");
             }
         });
-        FirebaseUtil.getCurrentProfilePicStorageRef().getDownloadUrl()
-                .addOnCompleteListener(task -> {
-                    if(task.isSuccessful()){
-                        Uri uri  = task.getResult();
-                        AndroidUtil.setProfilePic(getContext(),uri,profile_image);
-                    }
-                });
-
-        FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
-            currentUserModel = task.getResult().toObject(UserModel.class);
-            dprofile_username.setText(currentUserModel.getUsername());
-            dprofile_phone.setText(currentUserModel.getPhone());
-            dprofile_email.setText(currentUserModel.getEmail());
-            dprofile_type.setText("("+currentUserModel.getUsertype()+")");
-        });
     }
+
 }

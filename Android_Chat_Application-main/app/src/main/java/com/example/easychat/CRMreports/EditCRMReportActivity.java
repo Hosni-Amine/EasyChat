@@ -9,8 +9,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.easychat.MainActivity;
 import com.example.easychat.R;
 import com.example.easychat.model.ReportModel;
+import com.example.easychat.user_chat.SearchUserActivity;
 import com.example.easychat.utils.AndroidUtil;
 import com.example.easychat.utils.FirebaseUtil;
 import com.google.firebase.firestore.DocumentReference;
@@ -83,21 +85,19 @@ public class EditCRMReportActivity extends AppCompatActivity {
                     reportModel.setActionTaken(actiontaken.getText().toString());
                     reportModel.setPirepsMareps(pirepsmareps.getText().toString());
 
-                    DocumentReference fire = FirebaseUtil.crmreportreference(reportModel.getReportId());
-
-                    fire.set(reportModel)
+                    FirebaseUtil.crmreportreference(reportModel.getReportId()).set(reportModel)
                             .addOnSuccessListener(aVoid -> {
                                 AndroidUtil.showToast(getApplicationContext(),"Report updated successfully");
+                                startActivity(new Intent(EditCRMReportActivity.this, MainActivity.class));
                             })
                             .addOnFailureListener(e -> {
                                 AndroidUtil.showToast(getApplicationContext(),"Server error !");
                             });
-
                     Intent intent = new Intent(EditCRMReportActivity.this, CRMViewActivity.class);
                     AndroidUtil.passReportModelAsIntent(intent,reportModel);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
-                });
+        });
 
         backBtn.setOnClickListener((v)->{
             onBackPressed();

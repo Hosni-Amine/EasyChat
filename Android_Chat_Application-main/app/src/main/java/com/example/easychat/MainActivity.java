@@ -21,13 +21,10 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
 
-    String currentAirId = null;
     BottomNavigationView bottomNavigationView;
     ImageButton searchButton;
     ChatFragment chatFragment;
-    ProfileFragment profileFragment;
     DashboardFragment homeFragment;
-    ReportsFragment reportsfragment;
     AircraftFragment searchAircraftFragment;
 
 

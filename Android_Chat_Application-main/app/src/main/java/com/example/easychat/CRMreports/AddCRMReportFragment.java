@@ -105,22 +105,16 @@ public class AddCRMReportFragment extends Fragment {
             int month = calendar.get(Calendar.MONTH);
             int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
 
-            // Initialize DatePickerDialog with date and time pickers
             DatePickerDialog datePickerDialog = new DatePickerDialog(requireContext(),
                     (view1, year1, monthOfYear, dayOfMonth1) -> {
-                        // Update calendar with selected date
                         calendar.set(Calendar.YEAR, year1);
                         calendar.set(Calendar.MONTH, monthOfYear);
                         calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth1);
 
-                        // Show TimePickerDialog after selecting date
                         TimePickerDialog timePickerDialog = new TimePickerDialog(requireContext(),
                                 (view2, hourOfDay, minute) -> {
-                                    // Update calendar with selected time
                                     calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
                                     calendar.set(Calendar.MINUTE, minute);
-
-                                    // Set selected date and time
                                     Calendar selectedCalendar = Calendar.getInstance();
                                     selectedCalendar.set(year1, monthOfYear, dayOfMonth1, hourOfDay, minute);
                                     selectedDate = new Timestamp(selectedCalendar.getTime());
