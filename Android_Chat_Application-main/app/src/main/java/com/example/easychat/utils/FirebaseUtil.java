@@ -29,33 +29,25 @@ public class FirebaseUtil {
         }
         return false;
     }
-
     public static CollectionReference allAircraftCollectionReference() {
         return FirebaseFirestore.getInstance().collection("aircrafts");
-    }
-
-    public static DocumentReference getAircraftReference(String aircraftId) {
-        return FirebaseFirestore.getInstance().collection("aircrafts").document(aircraftId);
     }
 
     public static DocumentReference currentUserDetails(){
         return FirebaseFirestore.getInstance().collection("users").document(currentUserId());
     }
+    public static DocumentReference crmreportreference(String id){
+        return FirebaseFirestore.getInstance().collection("reports").document(id);
+    }
     public static DocumentReference otheruserUserDetails(String otheruser){
         return FirebaseFirestore.getInstance().collection("users").document(otheruser);
     }
-
-    public static DocumentReference currentAirDetails(String aircraftId){
-        return FirebaseFirestore.getInstance().collection("aircrafts").document(aircraftId);
-}
-
     public static CollectionReference allUserCollectionReference(){
         return FirebaseFirestore.getInstance().collection("users");
     }
     public static CollectionReference allUserTypesCollectionReference(){
         return FirebaseFirestore.getInstance().collection("usertypes");
     }
-
     public static DocumentReference getChatroomReference(String chatroomId){
         return FirebaseFirestore.getInstance().collection("chatrooms").document(chatroomId);
     }
@@ -78,13 +70,9 @@ public class FirebaseUtil {
     public static CollectionReference getResReports(){
         return FirebaseFirestore.getInstance().collection("reports");
     }
-    public static CollectionReference getReportMessageReference(String reportId){
-        return getReportReference(reportId).collection("chats");
-    }
     public static CollectionReference getGchatroomMessageReference(String gchatroomId){
         return getGchatroomReference(gchatroomId).collection("chats");
     }
-
     public static String getChatroomId(String userId1,String userId2){
         if(userId1.hashCode()<userId2.hashCode()){
             return userId1+"_"+userId2;
@@ -92,18 +80,15 @@ public class FirebaseUtil {
             return userId2+"_"+userId1;
         }
     }
-
     public static CollectionReference allChatroomCollectionReference(){
         return FirebaseFirestore.getInstance().collection("chatrooms");
     }
     public static CollectionReference allReportsCollectionReference(){
         return FirebaseFirestore.getInstance().collection("reports");
     }
-
     public static CollectionReference allUsersCollectionReference(){
         return FirebaseFirestore.getInstance().collection("users");
     }
-
     public static DocumentReference getOtherUserFromChatroom(List<String> userIds){
         if(userIds.get(0).equals(FirebaseUtil.currentUserId())){
             return allUserCollectionReference().document(userIds.get(1));
@@ -111,7 +96,6 @@ public class FirebaseUtil {
             return allUserCollectionReference().document(userIds.get(0));
         }
     }
-
     public static String timestampToString(Timestamp timestamp){
         return new SimpleDateFormat("HH:MM").format(timestamp.toDate());
     }
@@ -124,10 +108,6 @@ public class FirebaseUtil {
     public static StorageReference  getCurrentProfilePicStorageRef(){
         return FirebaseStorage.getInstance().getReference().child("profile_pic")
                 .child(FirebaseUtil.currentUserId());
-    }
-    public static StorageReference  getCurrentAirPicStorageRef(String aircraftId){
-        return FirebaseStorage.getInstance().getReference().child("air_pic")
-                .child(aircraftId);
     }
     public static StorageReference  getOtherProfilePicStorageRef(String otherUserId){
         return FirebaseStorage.getInstance().getReference().child("profile_pic")

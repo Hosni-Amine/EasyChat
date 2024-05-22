@@ -82,10 +82,52 @@ public class ReportModel {
         this.timestamp = timestamp;
     }
 
+    public ReportModel(String reportId,String actypeText,String preFlightCheckName, String flightNumber, String stationFrom, String stationTo, String departureBB, String departureAB, String captainAcceptance, String arrivalAB, String arrivalBB, String totalBB, String totalAB, String readingBeforeRefueling, String upliftKg, String upliftL, String readingAtDeparture, String readingAtArrival, String actualDencity, String upliftEng1, String upliftEng2, String readingAtDepartureEng1, String readingAtDepartureEng2, String readingAtArrivalEng1, String readingAtArrivalEng2, String inspectionCheckType, String stampLicence, String station, String docRefDoc, String pirepsMareps, String actionTaken, String senderId, String timestamp) {
+        this.reportId = reportId;
+        this.preFlightCheckName = preFlightCheckName;
+        this.flightNumber = flightNumber;
+        this.stationFrom = stationFrom;
+        this.stationTo = stationTo;
+        this.actypeText=actypeText;
+        this.departureBB = departureBB;
+        this.departureAB = departureAB;
+        this.captainAcceptance = captainAcceptance;
+        this.arrivalAB = arrivalAB;
+        this.arrivalBB = arrivalBB;
+        this.totalBB = totalBB;
+        this.totalAB = totalAB;
+        this.readingBeforeRefueling = readingBeforeRefueling;
+        this.upliftKg = upliftKg;
+        this.upliftL = upliftL;
+
+        this.readingAtDeparture = readingAtDeparture;
+        this.readingAtArrival = readingAtArrival;
+        this.actualDencity = actualDencity;
+        this.upliftEng1 = upliftEng1;
+        this.upliftEng2 = upliftEng2;
+
+        this.readingAtDepartureEng1 = readingAtDepartureEng1;
+        this.readingAtDepartureEng2 = readingAtDepartureEng2;
+        this.readingAtArrivalEng1 = readingAtArrivalEng1;
+        this.readingAtArrivalEng2 = readingAtArrivalEng2;
+        this.inspectionCheckType = inspectionCheckType;
+
+        this.stampLicence = stampLicence;
+        this.station = station;
+        this.docRefDoc = docRefDoc;
+        this.pirepsMareps = pirepsMareps;
+        this.actionTaken = actionTaken;
+
+        this.senderId = senderId;
+        this.timestamp = timestamp;
+    }
 
     // Getters
     public String getReportId() {
         return reportId;
+    }
+    public void setReportId(String reportId) {
+        this.reportId=reportId;
     }
 
     public String getPreFlightCheckName() {
@@ -213,5 +255,133 @@ public class ReportModel {
 
     public String getTimestamp() {
         return timestamp;
+    }
+
+    public void setPreFlightCheckName(String preFlightCheckName) {
+        this.preFlightCheckName = preFlightCheckName;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
+    }
+
+    public void setStationFrom(String stationFrom) {
+        this.stationFrom = stationFrom;
+    }
+
+    public void setStationTo(String stationTo) {
+        this.stationTo = stationTo;
+    }
+
+    public void setDepartureBB(String departureBB) {
+        this.departureBB = departureBB;
+    }
+
+    public void setDepartureAB(String departureAB) {
+        this.departureAB = departureAB;
+    }
+
+    public void setCaptainAcceptance(String captainAcceptance) {
+        this.captainAcceptance = captainAcceptance;
+    }
+
+    public void setArrivalAB(String arrivalAB) {
+        this.arrivalAB = arrivalAB;
+    }
+
+    public void setArrivalBB(String arrivalBB) {
+        this.arrivalBB = arrivalBB;
+    }
+
+    public void setTotalBB(String totalBB) {
+        this.totalBB = totalBB;
+    }
+
+    public void setTotalAB(String totalAB) {
+        this.totalAB = totalAB;
+    }
+
+    public void setReadingBeforeRefueling(String readingBeforeRefueling) {
+        this.readingBeforeRefueling = readingBeforeRefueling;
+    }
+
+    public void setUpliftKg(String upliftKg) {
+        this.upliftKg = upliftKg;
+    }
+
+    public void setUpliftL(String upliftL) {
+        this.upliftL = upliftL;
+    }
+
+    public void setReadingAtDeparture(String readingAtDeparture) {
+        this.readingAtDeparture = readingAtDeparture;
+    }
+
+    public void setReadingAtArrival(String readingAtArrival) {
+        this.readingAtArrival = readingAtArrival;
+    }
+
+    public void setActualDencity(String actualDencity) {
+        this.actualDencity = actualDencity;
+    }
+
+    public void setUpliftEng1(String upliftEng1) {
+        this.upliftEng1 = upliftEng1;
+    }
+
+    public void setUpliftEng2(String upliftEng2) {
+        this.upliftEng2 = upliftEng2;
+    }
+
+    public void setReadingAtDepartureEng1(String readingAtDepartureEng1) {
+        this.readingAtDepartureEng1 = readingAtDepartureEng1;
+    }
+
+    public void setReadingAtDepartureEng2(String readingAtDepartureEng2) {
+        this.readingAtDepartureEng2 = readingAtDepartureEng2;
+    }
+
+    public void setReadingAtArrivalEng1(String readingAtArrivalEng1) {
+        this.readingAtArrivalEng1 = readingAtArrivalEng1;
+    }
+
+    public void setReadingAtArrivalEng2(String readingAtArrivalEng2) {
+        this.readingAtArrivalEng2 = readingAtArrivalEng2;
+    }
+
+    public void setInspectionCheckType(String inspectionCheckType) {
+        this.inspectionCheckType = inspectionCheckType;
+    }
+
+    public void setStampLicence(String stampLicence) {
+        this.stampLicence = stampLicence;
+    }
+
+    public void setStation(String station) {
+        this.station = station;
+    }
+
+    public void setDocRefDoc(String docRefDoc) {
+        this.docRefDoc = docRefDoc;
+    }
+
+    public void setPirepsMareps(String pirepsMareps) {
+        this.pirepsMareps = pirepsMareps;
+    }
+
+    public void setActionTaken(String actionTaken) {
+        this.actionTaken = actionTaken;
+    }
+
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public void setActypeText(String actypeText) {
+        this.actypeText = actypeText;
     }
 }

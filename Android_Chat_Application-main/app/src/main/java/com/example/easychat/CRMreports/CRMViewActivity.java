@@ -1,10 +1,12 @@
 package com.example.easychat.CRMreports;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.easychat.R;
@@ -15,6 +17,7 @@ public class CRMViewActivity extends AppCompatActivity {
 
 
     ImageButton backBtn;
+    ImageView editBtn;
     EditText transitcheckname, flightnumber, stationFromInput, stationToInput, departureBBInput, departureABInput,
             captainAcceptanceInput, arrivalABInput, arrivalBBInput, totalBBInput, totalABInput,
             readingBeforeRefuelingInput, upliftKgInput, upliftLInput, readingAtDepartureInput,
@@ -33,11 +36,22 @@ public class CRMViewActivity extends AppCompatActivity {
         reportModel = AndroidUtil.getReportModelFromIntent(getIntent());
 
 
+        editBtn = findViewById(R.id.edit_btn);
+        editBtn.setOnClickListener((v)->{
+            Intent intent = new Intent(CRMViewActivity.this, EditCRMReportActivity.class);
+            AndroidUtil.passReportModelAsIntent(intent,reportModel);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        });
+
         backBtn = findViewById(R.id.back_btn);
 
         backBtn.setOnClickListener((v)->{
             onBackPressed();
         });
+
+
+
         timespam = findViewById(R.id.selected_date_text_view);
         actype =findViewById(R.id.actype);
         transitcheckname = findViewById(R.id.transitcheckname);

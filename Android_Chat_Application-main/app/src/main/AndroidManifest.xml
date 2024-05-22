@@ -9,9 +9,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/whatsappimage"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/whatsappimage"
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyChat"
         tools:targetApi="31">
@@ -20,14 +20,6 @@
             android:exported="false" />
         <activity
             android:name=".CRMreports.CRMViewActivity"
-            android:exported="false" />
-        <activity
-            android:name=".reports.ReportsActivity"
-            android:exported="false"
-            android:label="@string/title_activity_reports"
-            android:theme="@style/Theme.EasyChat" />
-        <activity
-            android:name=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".login.LoginActivity"

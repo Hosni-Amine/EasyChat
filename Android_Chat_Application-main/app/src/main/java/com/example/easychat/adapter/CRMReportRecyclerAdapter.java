@@ -19,6 +19,7 @@ import com.example.easychat.utils.AndroidUtil;
 import com.example.easychat.utils.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 
 public class CRMReportRecyclerAdapter extends FirestoreRecyclerAdapter<ReportModel, CRMReportRecyclerAdapter.ChatroomModelViewHolder> {
@@ -32,6 +33,8 @@ public class CRMReportRecyclerAdapter extends FirestoreRecyclerAdapter<ReportMod
 
     @Override
     protected void onBindViewHolder(@NonNull ChatroomModelViewHolder holder, int position, @NonNull ReportModel model) {
+        DocumentSnapshot documentSnapshot = getSnapshots().getSnapshot(position);
+        model.setReportId(documentSnapshot.getId());
         FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 UserModel currentUserModel = task.getResult().toObject(UserModel.class);

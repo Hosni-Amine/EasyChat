@@ -67,9 +67,8 @@ public class ProfileFragment extends Fragment {
                             AndroidUtil.setProfilePic(getContext(),selectedImageUri,profilePic);
                         }
                     }
-                }
-                );
-    }
+                });
+        }
 
 
 
@@ -157,11 +156,6 @@ public class ProfileFragment extends Fragment {
         }else{
             updateToFirestore();
         }
-
-
-
-
-
     }
 
     void updateToFirestore(){
@@ -174,7 +168,7 @@ public class ProfileFragment extends Fragment {
                         AndroidUtil.showToast(getContext(),"Updated failed");
                     }
                 });
-    }
+            }
 
 
 
@@ -188,7 +182,6 @@ public class ProfileFragment extends Fragment {
                                     AndroidUtil.setProfilePic(getContext(),uri,profilePic);
                                 }
                         });
-
         FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
             setInProgress(false);
             currentUserModel = task.getResult().toObject(UserModel.class);

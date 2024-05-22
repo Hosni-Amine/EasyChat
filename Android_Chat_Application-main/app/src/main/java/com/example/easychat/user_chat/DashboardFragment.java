@@ -18,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.easychat.CRMreports.CRMViewActivity;
+import com.example.easychat.CRMreports.EditCRMReportActivity;
 import com.example.easychat.R;
 import com.example.easychat.SplashActivity;
 import com.example.easychat.model.UserModel;
@@ -133,6 +135,22 @@ public class DashboardFragment extends Fragment {
 
     void getUserData(){
 
+        FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
+            currentUserModel = task.getResult().toObject(UserModel.class);
+            if(currentUserModel==null || currentUserModel.getUsername()==null || currentUserModel.getUsername()=="" || currentUserModel.getEmail()==null || currentUserModel.getEmail()==""){
+                FirebaseMessaging.getInstance().deleteToken().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            FirebaseUtil.logout();
+                            Intent intent = new Intent(getContext(), SplashActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                        }
+                    }
+                });
+            }
+        });
         FirebaseUtil.getCurrentProfilePicStorageRef().getDownloadUrl()
                 .addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
@@ -149,5 +167,4 @@ public class DashboardFragment extends Fragment {
             dprofile_type.setText("("+currentUserModel.getUsertype()+")");
         });
     }
-
 }

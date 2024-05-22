@@ -44,9 +44,9 @@ public class AndroidUtil {
         intent.putExtra("userId",model.getUserId());
         intent.putExtra("fcmToken",model.getFcmToken());
     }
-
     public static void passReportModelAsIntent(Intent intent, ReportModel model) {
         intent.putExtra("actypeText", model.getActypeText());
+        intent.putExtra("reportId", model.getReportId());
         intent.putExtra("preFlightCheckName", model.getPreFlightCheckName());
         intent.putExtra("flightNumber", model.getFlightNumber());
         intent.putExtra("stationFrom", model.getStationFrom());
@@ -79,7 +79,6 @@ public class AndroidUtil {
         intent.putExtra("senderId", model.getSenderId());
         intent.putExtra("timestamp", model.getTimestamp());
     }
-
     public static UserModel getUserModelFromIntent(Intent intent){
         UserModel userModel = new UserModel();
         userModel.setUsername(intent.getStringExtra("username"));
@@ -88,9 +87,9 @@ public class AndroidUtil {
         userModel.setFcmToken(intent.getStringExtra("fcmToken"));
         return userModel;
     }
-
     public static ReportModel getReportModelFromIntent(Intent intent) {
         ReportModel reportModel = new ReportModel(
+                intent.getStringExtra("reportId"),
                 intent.getStringExtra("actypeText"),
                 intent.getStringExtra("preFlightCheckName"),
                 intent.getStringExtra("flightNumber"),
@@ -126,20 +125,7 @@ public class AndroidUtil {
         );
         return reportModel;
     }
-
-
-    private static Timestamp stringToFirebaseTimestamp(String timestampString) {
-        try {
-            return new Timestamp(Long.parseLong(timestampString));
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
     public static void setProfilePic(Context context, Uri imageUri, ImageView imageView){
-        Glide.with(context).load(imageUri).apply(RequestOptions.circleCropTransform()).into(imageView);
-    }
-    public static void setAirPic(Context context, Uri imageUri, ImageView imageView){
         Glide.with(context).load(imageUri).apply(RequestOptions.circleCropTransform()).into(imageView);
     }
 }

@@ -1,8 +1,10 @@
 package com.example.easychat.CRMreports;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -10,11 +12,18 @@ import android.widget.TextView;
 import com.example.easychat.R;
 import com.example.easychat.model.ReportModel;
 import com.example.easychat.utils.AndroidUtil;
+import com.example.easychat.utils.FirebaseUtil;
+import com.google.firebase.firestore.DocumentReference;
+
+import org.w3c.dom.Document;
+
+import java.lang.ref.Reference;
 
 public class EditCRMReportActivity extends AppCompatActivity {
 
 
     ImageButton backBtn;
+    Button editBtn;
     EditText transitcheckname, flightnumber, stationFromInput, stationToInput, departureBBInput, departureABInput,
             captainAcceptanceInput, arrivalABInput, arrivalBBInput, totalBBInput, totalABInput,
             readingBeforeRefuelingInput, upliftKgInput, upliftLInput, readingAtDepartureInput,
@@ -29,15 +38,71 @@ public class EditCRMReportActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_crmactivity);
+        setContentView(R.layout.activity_edit_crmreport);
         reportModel = AndroidUtil.getReportModelFromIntent(getIntent());
 
 
         backBtn = findViewById(R.id.back_btn);
+        editBtn = findViewById(R.id.edit_btn);
+
+        editBtn.setOnClickListener((v)-> {
+
+                    reportModel.setPreFlightCheckName(transitcheckname.getText().toString());
+                    reportModel.setFlightNumber(flightnumber.getText().toString());
+                    reportModel.setStationFrom(stationFromInput.getText().toString());
+                    reportModel.setStationTo(stationToInput.getText().toString());
+                    reportModel.setDepartureBB(departureBBInput.getText().toString());
+
+                    reportModel.setDepartureAB(departureABInput.getText().toString());
+                    reportModel.setCaptainAcceptance(captainAcceptanceInput.getText().toString());
+                    reportModel.setArrivalAB(arrivalABInput.getText().toString());
+                    reportModel.setArrivalBB(arrivalBBInput.getText().toString());
+                    reportModel.setActypeText(actype.getText().toString());
+
+                    reportModel.setTotalBB(totalBBInput.getText().toString());
+                    reportModel.setTotalAB(totalABInput.getText().toString());
+                    reportModel.setReadingBeforeRefueling(readingBeforeRefuelingInput.getText().toString());
+                    reportModel.setUpliftKg(upliftKgInput.getText().toString());
+                    reportModel.setUpliftL(upliftLInput.getText().toString());
+
+                    reportModel.setReadingAtDeparture(readingAtDepartureInput.getText().toString());
+                    reportModel.setReadingAtArrival(readingAtArrivalInput.getText().toString());
+                    reportModel.setActualDencity(actualDencityInput.getText().toString());
+                    reportModel.setUpliftEng1(upliftEng1Input.getText().toString());
+                    reportModel.setUpliftEng2(upliftEng2Input.getText().toString());
+
+                    reportModel.setReadingAtDepartureEng1(readingAtDepartureEng1Input.getText().toString());
+                    reportModel.setReadingAtDepartureEng2(readingAtDepartureEng2Input.getText().toString());
+                    reportModel.setReadingAtArrivalEng1(readingAtArrivalEng1Input.getText().toString());
+                    reportModel.setReadingAtArrivalEng2(readingAtArrivalEng2Input.getText().toString());
+                    reportModel.setInspectionCheckType(inspectionCheckTypeInput.getText().toString());
+
+                    reportModel.setStampLicence(stampLicenceInput.getText().toString());
+                    reportModel.setStation(stationInput.getText().toString());
+                    reportModel.setDocRefDoc(docRefDocInput.getText().toString());
+                    reportModel.setActionTaken(actiontaken.getText().toString());
+                    reportModel.setPirepsMareps(pirepsmareps.getText().toString());
+
+                    DocumentReference fire = FirebaseUtil.crmreportreference(reportModel.getReportId());
+
+                    fire.set(reportModel)
+                            .addOnSuccessListener(aVoid -> {
+                                AndroidUtil.showToast(getApplicationContext(),"Report updated successfully");
+                            })
+                            .addOnFailureListener(e -> {
+                                AndroidUtil.showToast(getApplicationContext(),"Server error !");
+                            });
+
+                    Intent intent = new Intent(EditCRMReportActivity.this, CRMViewActivity.class);
+                    AndroidUtil.passReportModelAsIntent(intent,reportModel);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                });
 
         backBtn.setOnClickListener((v)->{
             onBackPressed();
         });
+
         timespam = findViewById(R.id.selected_date_text_view);
         actype =findViewById(R.id.actype);
         transitcheckname = findViewById(R.id.transitcheckname);

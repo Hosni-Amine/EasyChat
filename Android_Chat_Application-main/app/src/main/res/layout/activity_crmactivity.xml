@@ -52,7 +52,7 @@
             android:textSize="15sp" />
 
         <ImageView
-            android:id="@+id/add_report_btn"
+            android:id="@+id/edit_btn"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentEnd="true"
