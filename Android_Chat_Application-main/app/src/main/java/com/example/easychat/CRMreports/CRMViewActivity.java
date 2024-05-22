@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.easychat.MainActivity;
 import com.example.easychat.R;
 import com.example.easychat.model.ReportModel;
 import com.example.easychat.utils.AndroidUtil;
@@ -47,7 +48,10 @@ public class CRMViewActivity extends AppCompatActivity {
         backBtn = findViewById(R.id.back_btn);
 
         backBtn.setOnClickListener((v)->{
-            onBackPressed();
+            Intent intent = new Intent(CRMViewActivity.this, MainActivity.class);
+            intent.putExtra("reportId", reportModel.getReportId());
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         });
 
 

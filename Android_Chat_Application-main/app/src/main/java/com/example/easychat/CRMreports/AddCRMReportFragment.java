@@ -190,21 +190,22 @@ public class AddCRMReportFragment extends Fragment {
             String pirepsmarepsText = pirepsmareps.getText().toString();
             ReportModel reportModel;
 //      To get the form data
-//            reportModel = new ReportModel(actypeText, transitCheckNameText, flightNumberText, stationFromInputText, stationToInputText,
-//                                departureBBInputText, departureABInputText, captainAcceptanceInputText, arrivalABInputText, arrivalBBInputText,
-//                                totalBBInputText, totalABInputText, readingBeforeRefuelingInputText, upliftKgInputText, upliftLInputText,
-//                                readingAtDepartureInputText, readingAtArrivalInputText, actualDencityInputText, upliftEng1InputText, upliftEng2InputText,
-//                                readingAtDepartureEng1InputText, readingAtDepartureEng2InputText, readingAtArrivalEng1InputText, readingAtArrivalEng2InputText, inspectionCheckTypeInputText,
-//                                stampLicenceInputText, stationInputText, docRefDocInputText, pirepsmarepsText, actiontakenText, FirebaseUtil.currentUserId(), selectedDate);
-//
+           reportModel = new ReportModel(actypeText, transitCheckNameText, flightNumberText, stationFromInputText, stationToInputText,
+                                departureBBInputText, departureABInputText, captainAcceptanceInputText, arrivalABInputText, arrivalBBInputText,
+                                totalBBInputText, totalABInputText, readingBeforeRefuelingInputText, upliftKgInputText, upliftLInputText,
+                                readingAtDepartureInputText, readingAtArrivalInputText, actualDencityInputText, upliftEng1InputText, upliftEng2InputText,
+                                readingAtDepartureEng1InputText, readingAtDepartureEng2InputText, readingAtArrivalEng1InputText, readingAtArrivalEng2InputText, inspectionCheckTypeInputText,
+                                stampLicenceInputText, stationInputText, docRefDocInputText, pirepsmarepsText, actiontakenText, FirebaseUtil.currentUserId(),FirebaseUtil.timestampToString(selectedDate));
 
-                FirebaseFirestore.getInstance().collection("reports").add(new ReportModel("Airbus A320", "Transit Check", "AC1234", "Station A", "Station B",
-                        "12:00", "13:30", "Captain Acceptance", "14:00", "15:30",
-                        "15000 lbs", "16000 lbs", "5000 lbs", "5500 lbs", "5 L",
-                        "12:30", "15:00", "0.85", "2000 lbs", "2200 lbs",
-                        "10:30", "10:45", "12:15", "12:30", "Visual Inspection",
-                        "Stamped", "Station C", "DocRef123", "No PIREPs or MAREPs", "Actions taken",
-                        FirebaseUtil.currentUserId(),FirebaseUtil.datestampToString(selectedDate)));
+
+//                FirebaseFirestore.getInstance().collection("reports").add(new ReportModel("Airbus A320", "Transit Check", "AC1234", "Station A", "Station B",
+//                        "12:00", "13:30", "Captain Acceptance", "14:00", "15:30",
+//                        "15000 lbs", "16000 lbs", "5000 lbs", "5500 lbs", "5 L",
+//                        "12:30", "15:00", "0.85", "2000 lbs", "2200 lbs",
+//                        "10:30", "10:45", "12:15", "12:30", "Visual Inspection",
+//                        "Stamped", "Station C", "DocRef123", "No PIREPs or MAREPs", "Actions taken",
+//                        FirebaseUtil.currentUserId(),FirebaseUtil.datestampToString(selectedDate)));
+                FirebaseFirestore.getInstance().collection("reports").add(reportModel);
                 CRMReportFragment reportsFragment = new CRMReportFragment();
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();

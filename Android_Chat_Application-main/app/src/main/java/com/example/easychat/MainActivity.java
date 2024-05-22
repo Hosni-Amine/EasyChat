@@ -9,10 +9,9 @@ import android.view.MenuItem;
 import android.widget.ImageButton;
 
 import com.example.easychat.aircraft.AircraftFragment;
-import com.example.easychat.report.ReportsFragment;
+import com.example.easychat.CRMreports.CRMReportFragment;
 import com.example.easychat.user_chat.ChatFragment;
 import com.example.easychat.user_chat.DashboardFragment;
-import com.example.easychat.user_chat.ProfileFragment;
 import com.example.easychat.user_chat.SearchUserActivity;
 import com.example.easychat.utils.FirebaseUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     ChatFragment chatFragment;
     DashboardFragment homeFragment;
     AircraftFragment searchAircraftFragment;
+    CRMReportFragment crmReportFragment;
 
 
     @Override
@@ -36,17 +36,20 @@ public class MainActivity extends AppCompatActivity {
         chatFragment = new ChatFragment();
         homeFragment = new DashboardFragment();
         searchAircraftFragment = new AircraftFragment();
-
+        crmReportFragment = new CRMReportFragment();
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         searchButton = findViewById(R.id.main_search_btn);
         searchButton.setOnClickListener((v)->{
             startActivity(new Intent(MainActivity.this, SearchUserActivity.class));
         });
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, homeFragment).commit();
-
+        if (getIntent() != null && getIntent().hasExtra("reportId")) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, crmReportFragment).commit();
+        }else{
+            getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, homeFragment).commit();
+        }
             bottomNavigationView.setSelectedItemId(R.id.menu_home);
+
 
             bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
                 @Override
