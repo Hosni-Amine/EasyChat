@@ -88,15 +88,11 @@ public class EditCRMReportActivity extends AppCompatActivity {
                     FirebaseUtil.crmreportreference(reportModel.getReportId()).set(reportModel)
                             .addOnSuccessListener(aVoid -> {
                                 AndroidUtil.showToast(getApplicationContext(),"Report updated successfully");
-                                startActivity(new Intent(EditCRMReportActivity.this, MainActivity.class));
+                                onBackPressed();
                             })
                             .addOnFailureListener(e -> {
                                 AndroidUtil.showToast(getApplicationContext(),"Server error !");
                             });
-                    Intent intent = new Intent(EditCRMReportActivity.this, CRMViewActivity.class);
-                    AndroidUtil.passReportModelAsIntent(intent,reportModel);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
         });
 
         backBtn.setOnClickListener((v)->{
