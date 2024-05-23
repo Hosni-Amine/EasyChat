@@ -88,6 +88,7 @@
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="4dp"
             android:hint="Write message here"
+            android:textColor="@color/black"
             android:padding="10dp" />
 
 

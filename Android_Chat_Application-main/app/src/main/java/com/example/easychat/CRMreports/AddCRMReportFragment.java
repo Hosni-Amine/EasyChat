@@ -195,7 +195,7 @@ public class AddCRMReportFragment extends Fragment {
                                 totalBBInputText, totalABInputText, readingBeforeRefuelingInputText, upliftKgInputText, upliftLInputText,
                                 readingAtDepartureInputText, readingAtArrivalInputText, actualDencityInputText, upliftEng1InputText, upliftEng2InputText,
                                 readingAtDepartureEng1InputText, readingAtDepartureEng2InputText, readingAtArrivalEng1InputText, readingAtArrivalEng2InputText, inspectionCheckTypeInputText,
-                                stampLicenceInputText, stationInputText, docRefDocInputText, pirepsmarepsText, actiontakenText, FirebaseUtil.currentUserId(),FirebaseUtil.timestampToString(selectedDate));
+                                stampLicenceInputText, stationInputText, docRefDocInputText, pirepsmarepsText, actiontakenText, FirebaseUtil.currentUserId(),FirebaseUtil.datestampToString(selectedDate));
 
 
 //                FirebaseFirestore.getInstance().collection("reports").add(new ReportModel("Airbus A320", "Transit Check", "AC1234", "Station A", "Station B",

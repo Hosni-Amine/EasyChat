@@ -37,6 +37,7 @@ public class ReportModel {
     private String actionTaken;
     private String senderId;
     private String timestamp;
+    private String updatetimestamp;
     private String actypeText;
 
     public ReportModel() {
@@ -121,43 +122,74 @@ public class ReportModel {
         this.senderId = senderId;
         this.timestamp = timestamp;
     }
+    public ReportModel(String reportId,String actypeText,String preFlightCheckName, String flightNumber, String stationFrom, String stationTo, String departureBB, String departureAB, String captainAcceptance, String arrivalAB, String arrivalBB, String totalBB, String totalAB, String readingBeforeRefueling, String upliftKg, String upliftL, String readingAtDeparture, String readingAtArrival, String actualDencity, String upliftEng1, String upliftEng2, String readingAtDepartureEng1, String readingAtDepartureEng2, String readingAtArrivalEng1, String readingAtArrivalEng2, String inspectionCheckType, String stampLicence, String station, String docRefDoc, String pirepsMareps, String actionTaken, String senderId, String timestamp,String updatetimestamp) {
+        this.reportId = reportId;
+        this.preFlightCheckName = preFlightCheckName;
+        this.flightNumber = flightNumber;
+        this.stationFrom = stationFrom;
+        this.stationTo = stationTo;
+        this.actypeText=actypeText;
+        this.departureBB = departureBB;
+        this.departureAB = departureAB;
+        this.captainAcceptance = captainAcceptance;
+        this.arrivalAB = arrivalAB;
+        this.arrivalBB = arrivalBB;
+        this.totalBB = totalBB;
+        this.totalAB = totalAB;
+        this.readingBeforeRefueling = readingBeforeRefueling;
+        this.upliftKg = upliftKg;
+        this.upliftL = upliftL;
 
-    // Getters
+        this.readingAtDeparture = readingAtDeparture;
+        this.readingAtArrival = readingAtArrival;
+        this.actualDencity = actualDencity;
+        this.upliftEng1 = upliftEng1;
+        this.upliftEng2 = upliftEng2;
+
+        this.readingAtDepartureEng1 = readingAtDepartureEng1;
+        this.readingAtDepartureEng2 = readingAtDepartureEng2;
+        this.readingAtArrivalEng1 = readingAtArrivalEng1;
+        this.readingAtArrivalEng2 = readingAtArrivalEng2;
+        this.inspectionCheckType = inspectionCheckType;
+
+        this.stampLicence = stampLicence;
+        this.station = station;
+        this.docRefDoc = docRefDoc;
+        this.pirepsMareps = pirepsMareps;
+        this.actionTaken = actionTaken;
+
+        this.senderId = senderId;
+        this.timestamp = timestamp;
+        this.updatetimestamp = updatetimestamp;
+    }
+
     public String getReportId() {
         return reportId;
     }
     public void setReportId(String reportId) {
         this.reportId=reportId;
     }
-
     public String getPreFlightCheckName() {
         return preFlightCheckName;
     }
-
     public String getFlightNumber() {
         return flightNumber;
     }
-
     public String getStationFrom() {
         return stationFrom;
     }
-
     public String getStationTo() {
         return stationTo;
     }
-
     public String getDepartureBB() {
         return departureBB;
     }
-
     public String getDepartureAB() {
         return departureAB;
     }
-
     public String getCaptainAcceptance() {
         return captainAcceptance;
     }
-
     public String getArrivalAB() {
         return arrivalAB;
     }
@@ -256,6 +288,9 @@ public class ReportModel {
     public String getTimestamp() {
         return timestamp;
     }
+    public String getUpdatetimestamp() {
+        return updatetimestamp;
+    }
 
     public void setPreFlightCheckName(String preFlightCheckName) {
         this.preFlightCheckName = preFlightCheckName;
@@ -304,39 +339,30 @@ public class ReportModel {
     public void setReadingBeforeRefueling(String readingBeforeRefueling) {
         this.readingBeforeRefueling = readingBeforeRefueling;
     }
-
     public void setUpliftKg(String upliftKg) {
         this.upliftKg = upliftKg;
     }
-
     public void setUpliftL(String upliftL) {
         this.upliftL = upliftL;
     }
-
     public void setReadingAtDeparture(String readingAtDeparture) {
         this.readingAtDeparture = readingAtDeparture;
     }
-
     public void setReadingAtArrival(String readingAtArrival) {
         this.readingAtArrival = readingAtArrival;
     }
-
     public void setActualDencity(String actualDencity) {
         this.actualDencity = actualDencity;
     }
-
     public void setUpliftEng1(String upliftEng1) {
         this.upliftEng1 = upliftEng1;
     }
-
     public void setUpliftEng2(String upliftEng2) {
         this.upliftEng2 = upliftEng2;
     }
-
     public void setReadingAtDepartureEng1(String readingAtDepartureEng1) {
         this.readingAtDepartureEng1 = readingAtDepartureEng1;
     }
-
     public void setReadingAtDepartureEng2(String readingAtDepartureEng2) {
         this.readingAtDepartureEng2 = readingAtDepartureEng2;
     }
@@ -368,19 +394,16 @@ public class ReportModel {
     public void setPirepsMareps(String pirepsMareps) {
         this.pirepsMareps = pirepsMareps;
     }
-
     public void setActionTaken(String actionTaken) {
         this.actionTaken = actionTaken;
-    }
-
-    public void setSenderId(String senderId) {
-        this.senderId = senderId;
     }
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
-
+    public void setUpdatetimestamp(String updatetimestamp) {
+        this.updatetimestamp = updatetimestamp;
+    }
     public void setActypeText(String actypeText) {
         this.actypeText = actypeText;
     }

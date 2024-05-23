@@ -78,6 +78,7 @@ public class AndroidUtil {
         intent.putExtra("actionTaken", model.getActionTaken());
         intent.putExtra("senderId", model.getSenderId());
         intent.putExtra("timestamp", model.getTimestamp());
+        intent.putExtra("updatetimestamp", model.getUpdatetimestamp());
     }
     public static UserModel getUserModelFromIntent(Intent intent){
         UserModel userModel = new UserModel();
@@ -121,7 +122,8 @@ public class AndroidUtil {
                 intent.getStringExtra("pirepsMareps"),
                 intent.getStringExtra("actionTaken"),
                 intent.getStringExtra("senderId"),
-                intent.getStringExtra("timestamp")
+                intent.getStringExtra("timestamp"),
+                intent.getStringExtra("updatetimestamp")
         );
         return reportModel;
     }

@@ -27,7 +27,7 @@ public class CRMViewActivity extends AppCompatActivity {
             readingAtArrivalEng2Input, inspectionCheckTypeInput, stampLicenceInput, stationInput,
             docRefDocInput,pirepsmareps,actiontaken,actype;
 
-    TextView timespam;
+    TextView timespam,updatetimespam;
     ReportModel reportModel;
 
     @Override
@@ -55,7 +55,7 @@ public class CRMViewActivity extends AppCompatActivity {
         });
 
 
-
+        updatetimespam = findViewById(R.id.selected_updatedate_text_view);
         timespam = findViewById(R.id.selected_date_text_view);
         actype =findViewById(R.id.actype);
         transitcheckname = findViewById(R.id.transitcheckname);
@@ -123,8 +123,9 @@ public class CRMViewActivity extends AppCompatActivity {
         actiontaken.setText(reportModel.getActionTaken());
         pirepsmareps.setText(reportModel.getPirepsMareps());
         timespam.setText(reportModel.getTimestamp());
-
-
+        if(reportModel.getUpdatetimestamp()!=null){
+            updatetimespam.setText("Last update:"+reportModel.getUpdatetimestamp());
+        }
         disableEditTexts();
     }
 

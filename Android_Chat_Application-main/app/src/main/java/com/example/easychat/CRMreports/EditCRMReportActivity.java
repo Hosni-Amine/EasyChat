@@ -15,11 +15,13 @@ import com.example.easychat.model.ReportModel;
 import com.example.easychat.user_chat.SearchUserActivity;
 import com.example.easychat.utils.AndroidUtil;
 import com.example.easychat.utils.FirebaseUtil;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 
 import org.w3c.dom.Document;
 
 import java.lang.ref.Reference;
+import java.util.Date;
 
 public class EditCRMReportActivity extends AppCompatActivity {
 
@@ -34,7 +36,7 @@ public class EditCRMReportActivity extends AppCompatActivity {
             readingAtArrivalEng2Input, inspectionCheckTypeInput, stampLicenceInput, stationInput,
             docRefDocInput,pirepsmareps,actiontaken,actype;
 
-    TextView timespam;
+    TextView timespam,updatetimespam;
     ReportModel reportModel;
 
     @Override
@@ -43,12 +45,10 @@ public class EditCRMReportActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_crmreport);
         reportModel = AndroidUtil.getReportModelFromIntent(getIntent());
 
-
         backBtn = findViewById(R.id.back_btn);
         editBtn = findViewById(R.id.edit_btn);
 
         editBtn.setOnClickListener((v)-> {
-
                     reportModel.setPreFlightCheckName(transitcheckname.getText().toString());
                     reportModel.setFlightNumber(flightnumber.getText().toString());
                     reportModel.setStationFrom(stationFromInput.getText().toString());
@@ -84,6 +84,7 @@ public class EditCRMReportActivity extends AppCompatActivity {
                     reportModel.setDocRefDoc(docRefDocInput.getText().toString());
                     reportModel.setActionTaken(actiontaken.getText().toString());
                     reportModel.setPirepsMareps(pirepsmareps.getText().toString());
+                    reportModel.setUpdatetimestamp(FirebaseUtil.datestampToString(Timestamp.now()));
 
                     FirebaseUtil.crmreportreference(reportModel.getReportId()).set(reportModel)
                             .addOnSuccessListener(aVoid -> {
@@ -103,6 +104,7 @@ public class EditCRMReportActivity extends AppCompatActivity {
         });
 
         timespam = findViewById(R.id.selected_date_text_view);
+        updatetimespam = findViewById(R.id.selected_updatedate_text_view);
         actype =findViewById(R.id.actype);
         transitcheckname = findViewById(R.id.transitcheckname);
         flightnumber = findViewById(R.id.flightnumber);
@@ -169,6 +171,9 @@ public class EditCRMReportActivity extends AppCompatActivity {
         actiontaken.setText(reportModel.getActionTaken());
         pirepsmareps.setText(reportModel.getPirepsMareps());
         timespam.setText(reportModel.getTimestamp());
+        if(reportModel.getUpdatetimestamp()!=null){
+            updatetimespam.setText("Last update:"+reportModel.getUpdatetimestamp());
+        }
 
     }
 }
