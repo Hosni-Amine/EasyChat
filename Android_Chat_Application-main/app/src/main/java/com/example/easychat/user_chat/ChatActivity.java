@@ -1,10 +1,13 @@
 package com.example.easychat.user_chat;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,12 +30,16 @@ import com.example.easychat.model.UserModel;
 import com.example.easychat.utils.AndroidUtil;
 import com.example.easychat.utils.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.storage.UploadTask;
 
 import org.checkerframework.checker.units.qual.C;
 import org.json.JSONObject;
@@ -41,6 +48,8 @@ import java.io.IOException;
 import java.sql.Time;
 import java.util.Arrays;
 
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -61,7 +70,11 @@ public class ChatActivity extends AppCompatActivity {
     TextView otherUsername;
     RecyclerView recyclerView;
     ImageView imageView;
+    ImageView messagePic;
     private Spinner userSpinner;
+    Uri selectedImageUri;
+
+    ActivityResultLauncher<Intent> imagePickLauncher;
 
 
     @Override
@@ -69,9 +82,29 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         String[] options = {"Technician", "Admin", "Airport Commander"};
+        messagePic = findViewById(R.id.attach_btn);
+        imagePickLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if(result.getResultCode() == Activity.RESULT_OK){
+                        Intent data = result.getData();
+                        if(data!=null && data.getData()!=null){
+                            selectedImageUri = data.getData();
+                            AndroidUtil.setProfilePic(ChatActivity.this, selectedImageUri, messagePic);
+                        }
+                    }
+                });
+        messagePic.setOnClickListener((v)->{
+            ImagePicker.with(this).cropSquare().compress(512).maxResultSize(512,512)
+                    .createIntent(new Function1<Intent, Unit>() {
+                        @Override
+                        public Unit invoke(Intent intent) {
+                            imagePickLauncher.launch(intent);
+                            return null;
+                        }
+                    });
+        });
 
         otherUser = AndroidUtil.getUserModelFromIntent(getIntent());
-
         chatroomId = FirebaseUtil.getChatroomId(FirebaseUtil.currentUserId(),otherUser.getUserId());
         messageInput = findViewById(R.id.chat_message_input);
         sendMessageBtn = findViewById(R.id.message_send_btn);
@@ -135,9 +168,15 @@ public class ChatActivity extends AppCompatActivity {
 
         sendMessageBtn.setOnClickListener((v -> {
             String message = messageInput.getText().toString().trim();
-            if(message.isEmpty())
-                return;
-            sendMessageToUser(message);
+            if(message.isEmpty()) {
+                if(selectedImageUri!=null){
+                    uploadImageAndSendMessage();
+                }else{
+                    return;
+                }
+            }else{
+                sendMessageToUser(message);
+            }
         }));
 
         getOrCreateChatroomModel();
@@ -176,24 +215,54 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
-    void sendMessageToUser(String message){
-
+    void sendMessageToUser(String message) {
         chatroomModel.setLastMessageTimestamp(Timestamp.now());
         chatroomModel.setLastMessageSenderId(FirebaseUtil.currentUserId());
         chatroomModel.setLastMessage(message);
         FirebaseUtil.getChatroomReference(chatroomId).set(chatroomModel);
-
-        ChatMessageModel chatMessageModel = new ChatMessageModel(message,FirebaseUtil.currentUserId(),Timestamp.now());
+        ChatMessageModel chatMessageModel = new ChatMessageModel(message, FirebaseUtil.currentUserId(), Timestamp.now());
         FirebaseUtil.getChatroomMessageReference(chatroomId).add(chatMessageModel)
                 .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentReference> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             messageInput.setText("");
+                            if (selectedImageUri != null) {
+                                uploadImageAndSendMessage();
+                            }
+
                         }
                     }
                 });
-    }
+        }
+
+    void uploadImageAndSendMessage(){
+        String id = FirebaseUtil.getUniqueId();
+        FirebaseUtil.getMessagePicStorageRef(id).putFile(selectedImageUri)
+                .addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUtil.getChatroomReference(chatroomId).set(chatroomModel);
+                            ChatMessageModel chatMessageModel = new ChatMessageModel(1,id, FirebaseUtil.currentUserId(), Timestamp.now());
+                            FirebaseUtil.getChatroomMessageReference(chatroomId).add(chatMessageModel)
+                                    .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DocumentReference> task) {
+                                            if (task.isSuccessful()) {
+                                                messageInput.setText("");
+                                                messagePic.setImageResource(R.drawable.attach);
+                                                selectedImageUri = null;
+                                            }
+                                        }
+                                    });
+                        } else {
+                            AndroidUtil.showToast(getApplicationContext(), "Image upload failed");
+                        }
+                    }
+                });
+        }
+
     void getOrCreateChatroomModel(){
         FirebaseUtil.getChatroomReference(chatroomId).get().addOnCompleteListener(task -> {
             if(task.isSuccessful()){

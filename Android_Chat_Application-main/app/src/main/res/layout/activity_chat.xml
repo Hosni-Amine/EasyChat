@@ -88,8 +88,22 @@
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="4dp"
             android:hint="Write message here"
-            android:padding="10dp"
-            android:textColor="@color/black" />
+            android:padding="10dp" />
+
+
+        <ImageView
+            android:id="@+id/attach_btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp"
+            android:src="@drawable/attach" />
 
         <ImageButton
             android:id="@+id/message_send_btn"
@@ -97,9 +111,8 @@
             android:layout_height="48dp"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="45dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:padding="8dp"
             android:src="@drawable/icon_send"
             app:tint="@color/my_primary" />
 

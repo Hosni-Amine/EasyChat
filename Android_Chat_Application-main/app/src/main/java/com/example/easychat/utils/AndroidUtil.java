@@ -128,4 +128,7 @@ public class AndroidUtil {
     public static void setProfilePic(Context context, Uri imageUri, ImageView imageView){
         Glide.with(context).load(imageUri).apply(RequestOptions.circleCropTransform()).into(imageView);
     }
+    public static void setMessagePic(Context context, Uri imageUri, ImageView imageView){
+        Glide.with(context).load(imageUri).into(imageView);
+    }
 }

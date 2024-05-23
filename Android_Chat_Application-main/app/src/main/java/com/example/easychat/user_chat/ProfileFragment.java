@@ -100,8 +100,6 @@ public class ProfileFragment extends Fragment {
         updateProfileBtn.setOnClickListener((v -> {
             updateBtnClick();
         }));
-
-
         profilePic.setOnClickListener((v)->{
             ImagePicker.with(this).cropSquare().compress(512).maxResultSize(512,512)
                     .createIntent(new Function1<Intent, Unit>() {
@@ -112,7 +110,6 @@ public class ProfileFragment extends Fragment {
                         }
                     });
         });
-
         return view;
     }
 

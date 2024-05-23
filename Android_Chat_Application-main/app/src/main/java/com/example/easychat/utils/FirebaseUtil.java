@@ -17,6 +17,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.UUID;
 
 public class FirebaseUtil {
 
@@ -28,6 +29,9 @@ public class FirebaseUtil {
             return true;
         }
         return false;
+    }
+    public static String getUniqueId() {
+        return UUID.randomUUID().toString();
     }
     public static CollectionReference allAircraftCollectionReference() {
         return FirebaseFirestore.getInstance().collection("aircrafts");
@@ -109,9 +113,17 @@ public class FirebaseUtil {
         return FirebaseStorage.getInstance().getReference().child("profile_pic")
                 .child(FirebaseUtil.currentUserId());
     }
+    public static StorageReference  getChatImageStorageRef(String id){
+        return FirebaseStorage.getInstance().getReference().child("message_pic")
+                .child(id);
+    }
     public static StorageReference  getOtherProfilePicStorageRef(String otherUserId){
         return FirebaseStorage.getInstance().getReference().child("profile_pic")
                 .child(otherUserId);
+    }
+    public static StorageReference  getMessagePicStorageRef(String messageId){
+        return FirebaseStorage.getInstance().getReference().child("message_pic")
+                .child(messageId);
     }
     public static StorageReference  getOtherAirPicStorageRef(String otherAirId){
         return FirebaseStorage.getInstance().getReference().child("air_pic")

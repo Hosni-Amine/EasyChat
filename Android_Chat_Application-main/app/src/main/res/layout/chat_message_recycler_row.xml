@@ -13,13 +13,24 @@
         android:layout_marginEnd="80dp"
         android:id="@+id/left_chat_layout"
         android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/left_chat_imageview"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone"
+            android:scaleType="centerCrop" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:text="Hello"
+            android:text=""
             android:id="@+id/left_chat_textview"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,8 +40,7 @@
             android:id="@+id/left_sender_name"
             android:layout_marginTop="2dp"
             android:gravity="end"/>
-</LinearLayout>
-
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -42,13 +52,23 @@
         android:orientation="vertical"
         android:layout_marginStart="80dp"
         android:id="@+id/right_chat_layout">
+
+        <ImageView
+            android:id="@+id/right_chat_imageview"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:scaleType="centerCrop" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/my_primary"
             android:textSize="18sp"
-            android:text="hiiiii"
+            android:text=""
             android:id="@+id/right_chat_textview"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

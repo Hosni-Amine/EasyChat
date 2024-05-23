@@ -60,7 +60,7 @@
             android:layout_marginRight="10dp"
             android:clickable="true"
             android:focusable="true"
-            android:src="@drawable/editcrm"/>
+            android:src="@drawable/editcrm" />
 
     </RelativeLayout>
 
