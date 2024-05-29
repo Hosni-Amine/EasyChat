@@ -75,6 +75,7 @@ public class CRMReportRecyclerAdapter extends FirestoreRecyclerAdapter<ReportMod
         TextView usernameText;
         TextView lastMessageText;
         TextView lastMessageTime;
+        TextView updateMessageTime;
         ImageView profilePic;
 
         public ChatroomModelViewHolder(@NonNull View itemView) {

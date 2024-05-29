@@ -3,6 +3,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -124,7 +125,10 @@ public class CRMViewActivity extends AppCompatActivity {
         pirepsmareps.setText(reportModel.getPirepsMareps());
         timespam.setText(reportModel.getTimestamp());
         if(reportModel.getUpdatetimestamp()!=null){
+            updatetimespam.setVisibility(View.VISIBLE);
             updatetimespam.setText("Last update:"+reportModel.getUpdatetimestamp());
+        }else{
+            updatetimespam.setVisibility(View.INVISIBLE);
         }
         disableEditTexts();
     }

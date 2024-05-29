@@ -128,7 +128,6 @@ public class ProfileFragment extends Fragment {
         currentUserModel.setEmail(newUseremail);
         setInProgress(true);
 
-
         if(selectedImageUri!=null){
             FirebaseUtil.getCurrentProfilePicStorageRef().putFile(selectedImageUri)
                     .addOnCompleteListener(task -> {

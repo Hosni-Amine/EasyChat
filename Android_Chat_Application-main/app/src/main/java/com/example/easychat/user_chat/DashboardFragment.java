@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -66,6 +67,7 @@ public class DashboardFragment extends Fragment {
 
         RelativeLayout editProfileBtn = view.findViewById(R.id.edit_profile_btn);
         RelativeLayout rereports_btn = view.findViewById(R.id.rereports_btn);
+        RelativeLayout statistics_btn = view.findViewById(R.id.statistics_btn);
         RelativeLayout reps_btn = view.findViewById(R.id.reps);
         RelativeLayout cathalog_btn = view.findViewById(R.id.cathalog);
         RelativeLayout logoutBtn = view.findViewById(R.id.logout_btn);
@@ -73,7 +75,6 @@ public class DashboardFragment extends Fragment {
         dprofile_email = view.findViewById(R.id.dprofile_email);
         dprofile_phone = view.findViewById(R.id.dprofile_phone);
         dprofile_type = view.findViewById(R.id.dprofile_type);
-
         profile_image = view.findViewById(R.id.profile_image);
 
         logoutBtn.setOnClickListener((v)->{
@@ -90,6 +91,7 @@ public class DashboardFragment extends Fragment {
             });
         });
 
+
         editProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,6 +99,18 @@ public class DashboardFragment extends Fragment {
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.main_frame_layout, profileFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+        //new
+        statistics_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StatisticsFragment statisticsFragment = new StatisticsFragment();
+                FragmentManager fragmentManager = getParentFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.main_frame_layout, statisticsFragment );
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
@@ -112,7 +126,8 @@ public class DashboardFragment extends Fragment {
                 transaction.commit();
             }
         });
-        rereports_btn.setOnClickListener(new View.OnClickListener() {
+        rereports_btn
+                .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CRMReportFragment profileFragment = new CRMReportFragment();
