@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 
-import com.example.easychat.aircraft.AircraftFragment;
+import com.example.easychat.aircraft.GroupChatAircraftFragment;
 import com.example.easychat.CRMreports.CRMReportFragment;
 import com.example.easychat.user_chat.ChatFragment;
 import com.example.easychat.user_chat.DashboardFragment;
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton searchButton;
     ChatFragment chatFragment;
     DashboardFragment homeFragment;
-    AircraftFragment searchAircraftFragment;
+    GroupChatAircraftFragment GroupChatFramgent;
     CRMReportFragment crmReportFragment;
 
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         chatFragment = new ChatFragment();
         homeFragment = new DashboardFragment();
-        searchAircraftFragment = new AircraftFragment();
+        GroupChatFramgent = new GroupChatAircraftFragment();
         crmReportFragment = new CRMReportFragment();
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                             getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, homeFragment).commit();
                             break;
                         case R.id.menu_crafts:
-                            getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, searchAircraftFragment).commit();
+                            getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout,GroupChatFramgent /*searchAircraftFragment*/  ).commit();
                             break;
                     }
                     return true;

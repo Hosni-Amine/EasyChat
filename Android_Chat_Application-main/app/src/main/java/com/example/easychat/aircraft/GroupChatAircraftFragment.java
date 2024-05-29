@@ -18,13 +18,13 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.Query;
 
 
-public class AircraftFragment extends Fragment {
+public class GroupChatAircraftFragment extends Fragment {
 
 
         RecyclerView recyclerView;
         RecentChatAircraftRecyclerAdapter adapter;
 
-        public AircraftFragment() {
+        public GroupChatAircraftFragment() {
         }
 
         @Override
