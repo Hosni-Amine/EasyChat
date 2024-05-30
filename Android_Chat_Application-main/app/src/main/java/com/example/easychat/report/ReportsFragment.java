@@ -27,9 +27,7 @@ public class ReportsFragment extends Fragment {
 
     RecyclerView recyclerView;
     ReportRecyclerAdapter adapter;
-
     ImageButton backBtn;
-
     public ReportsFragment() {
     }
 

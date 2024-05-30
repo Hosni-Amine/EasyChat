@@ -54,14 +54,6 @@
             android:layout_marginBottom="5dp"
             android:textColor="@color/black"
             android:id="@+id/last_message_time_text"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="10:00"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="5dp"
-            android:textColor="@color/black"
-            android:id="@+id/last_message_updatetime_text"/>
+
     </LinearLayout>
 </LinearLayout>

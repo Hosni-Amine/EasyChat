@@ -56,6 +56,9 @@ public class CRMReportRecyclerAdapter extends FirestoreRecyclerAdapter<ReportMod
             }
             holder.lastMessageTime.setText("At: " + model.getTimestamp());
             holder.usernameText.setText(model.getActypeText());
+            if(model.getUpdatetimestamp() != null){
+                holder.updateMessageTime.setText("Last update at "+model.getUpdatetimestamp());
+            }
             holder.itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(context, CRMViewActivity.class);
                 AndroidUtil.passReportModelAsIntent(intent,model);
@@ -84,6 +87,7 @@ public class CRMReportRecyclerAdapter extends FirestoreRecyclerAdapter<ReportMod
             lastMessageText = itemView.findViewById(R.id.last_message_text);
             lastMessageTime = itemView.findViewById(R.id.last_message_time_text);
             profilePic = itemView.findViewById(R.id.profile_pic_image_view);
+            updateMessageTime = itemView.findViewById(R.id.last_message_update_text);
         }
     }
 }
