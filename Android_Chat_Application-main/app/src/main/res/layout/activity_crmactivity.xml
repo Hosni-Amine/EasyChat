@@ -120,7 +120,6 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:id="@+id/flightnumber"
-                android:hint="Enter the flight number"
                 android:inputType="text"
                 android:textColor="@color/my_primary"
                 android:layout_margin="10dp"
