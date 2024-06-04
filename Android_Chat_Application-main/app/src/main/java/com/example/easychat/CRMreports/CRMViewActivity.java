@@ -26,7 +26,7 @@ public class CRMViewActivity extends AppCompatActivity {
             readingAtArrivalInput, actualDencityInput, upliftEng1Input, upliftEng2Input,
             readingAtDepartureEng1Input, readingAtDepartureEng2Input, readingAtArrivalEng1Input,
             readingAtArrivalEng2Input, inspectionCheckTypeInput, stampLicenceInput, stationInput,
-            docRefDocInput,pirepsmareps,actiontaken,actype;
+            docRefDocInput,pirepsmareps,actiontaken,actype,timefuelcard;
 
     TextView timespam,updatetimespam;
     ReportModel reportModel;
@@ -88,6 +88,7 @@ public class CRMViewActivity extends AppCompatActivity {
         docRefDocInput =findViewById(R.id.docref);
         pirepsmareps = findViewById(R.id.pirepsmareps);
         actiontaken = findViewById(R.id.actiontaken);
+        timefuelcard = findViewById(R.id.timefuelcard);
 
         transitcheckname.setText(reportModel.getPreFlightCheckName());
         flightnumber.setText(reportModel.getFlightNumber());
@@ -124,6 +125,7 @@ public class CRMViewActivity extends AppCompatActivity {
         actiontaken.setText(reportModel.getActionTaken());
         pirepsmareps.setText(reportModel.getPirepsMareps());
         timespam.setText(reportModel.getTimestamp());
+        timefuelcard.setText(reportModel.getTimefuelcard());
         if(reportModel.getUpdatetimestamp()!=null){
             updatetimespam.setVisibility(View.VISIBLE);
             updatetimespam.setText("Last update:"+reportModel.getUpdatetimestamp());
@@ -136,6 +138,7 @@ public class CRMViewActivity extends AppCompatActivity {
 
 
     private void disableEditTexts() {
+        timefuelcard.setEnabled(false);
         transitcheckname.setEnabled(false);
         flightnumber.setEnabled(false);
         stationFromInput.setEnabled(false);

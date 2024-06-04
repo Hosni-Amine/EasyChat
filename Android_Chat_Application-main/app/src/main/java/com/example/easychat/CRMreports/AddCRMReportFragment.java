@@ -43,7 +43,7 @@ public class AddCRMReportFragment extends Fragment {
             readingAtArrivalInput, actualDencityInput, upliftEng1Input, upliftEng2Input,
             readingAtDepartureEng1Input, readingAtDepartureEng2Input, readingAtArrivalEng1Input,
             readingAtArrivalEng2Input, inspectionCheckTypeInput, stampLicenceInput, stationInput,
-            docRefDocInput,pirepsmareps,actiontaken,actype;
+            docRefDocInput,pirepsmareps,actiontaken,actype,timefuelcard;
     Timestamp selectedDate;
 
     public AddCRMReportFragment() {
@@ -95,6 +95,7 @@ public class AddCRMReportFragment extends Fragment {
         docRefDocInput = view.findViewById(R.id.docref);
         pirepsmareps = view.findViewById(R.id.pirepsmareps);
         actiontaken = view.findViewById(R.id.actiontaken);
+        timefuelcard = view.findViewById(R.id.timefuelcard);
 
         calendar = Calendar.getInstance();
         updateDateInView();
@@ -188,14 +189,15 @@ public class AddCRMReportFragment extends Fragment {
             String docRefDocInputText = docRefDocInput.getText().toString();
             String actiontakenText = actiontaken.getText().toString();
             String pirepsmarepsText = pirepsmareps.getText().toString();
+            String timefuelcardtext = timefuelcard.getText().toString();
             ReportModel reportModel;
 //      To get the form data
-           reportModel = new ReportModel(actypeText, transitCheckNameText, flightNumberText, stationFromInputText, stationToInputText,
-                                departureBBInputText, departureABInputText, captainAcceptanceInputText, arrivalABInputText, arrivalBBInputText,
-                                totalBBInputText, totalABInputText, readingBeforeRefuelingInputText, upliftKgInputText, upliftLInputText,
-                                readingAtDepartureInputText, readingAtArrivalInputText, actualDencityInputText, upliftEng1InputText, upliftEng2InputText,
-                                readingAtDepartureEng1InputText, readingAtDepartureEng2InputText, readingAtArrivalEng1InputText, readingAtArrivalEng2InputText, inspectionCheckTypeInputText,
-                                stampLicenceInputText, stationInputText, docRefDocInputText, pirepsmarepsText, actiontakenText, FirebaseUtil.currentUserId(),FirebaseUtil.datestampToString(selectedDate));
+            reportModel = new ReportModel(timefuelcardtext,actypeText, transitCheckNameText, flightNumberText, stationFromInputText, stationToInputText,
+                    departureBBInputText, departureABInputText, captainAcceptanceInputText, arrivalABInputText, arrivalBBInputText,
+                    totalBBInputText, totalABInputText, readingBeforeRefuelingInputText, upliftKgInputText, upliftLInputText,
+                    readingAtDepartureInputText, readingAtArrivalInputText, actualDencityInputText, upliftEng1InputText, upliftEng2InputText,
+                    readingAtDepartureEng1InputText, readingAtDepartureEng2InputText, readingAtArrivalEng1InputText, readingAtArrivalEng2InputText, inspectionCheckTypeInputText,
+                    stampLicenceInputText, stationInputText, docRefDocInputText, pirepsmarepsText, actiontakenText, FirebaseUtil.currentUserId(),FirebaseUtil.datestampToString(selectedDate));
 
 
 //                FirebaseFirestore.getInstance().collection("reports").add(new ReportModel("Airbus A320", "Transit Check", "AC1234", "Station A", "Station B",

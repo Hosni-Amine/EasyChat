@@ -79,6 +79,7 @@ public class AndroidUtil {
         intent.putExtra("senderId", model.getSenderId());
         intent.putExtra("timestamp", model.getTimestamp());
         intent.putExtra("updatetimestamp", model.getUpdatetimestamp());
+        intent.putExtra("timefuelcard", model.getTimefuelcard());
     }
     public static UserModel getUserModelFromIntent(Intent intent){
         UserModel userModel = new UserModel();
@@ -90,6 +91,7 @@ public class AndroidUtil {
     }
     public static ReportModel getReportModelFromIntent(Intent intent) {
         ReportModel reportModel = new ReportModel(
+                intent.getStringExtra("timefuelcard"),
                 intent.getStringExtra("reportId"),
                 intent.getStringExtra("actypeText"),
                 intent.getStringExtra("preFlightCheckName"),

@@ -18,6 +18,7 @@ public class ReportModel {
     private String totalBB;
     private String totalAB;
     private String readingBeforeRefueling;
+    private String timefuelcard;
     private String upliftKg;
     private String upliftL;
     private String readingAtDeparture;
@@ -43,8 +44,8 @@ public class ReportModel {
     public ReportModel() {
     }
 
-    public ReportModel(String actypeText,String preFlightCheckName, String flightNumber, String stationFrom, String stationTo, String departureBB, String departureAB, String captainAcceptance, String arrivalAB, String arrivalBB, String totalBB, String totalAB, String readingBeforeRefueling, String upliftKg, String upliftL, String readingAtDeparture, String readingAtArrival, String actualDencity, String upliftEng1, String upliftEng2, String readingAtDepartureEng1, String readingAtDepartureEng2, String readingAtArrivalEng1, String readingAtArrivalEng2, String inspectionCheckType, String stampLicence, String station, String docRefDoc, String pirepsMareps, String actionTaken, String senderId, String timestamp) {
-
+    public ReportModel(String timefuelcard,String actypeText,String preFlightCheckName, String flightNumber, String stationFrom, String stationTo, String departureBB, String departureAB, String captainAcceptance, String arrivalAB, String arrivalBB, String totalBB, String totalAB, String readingBeforeRefueling, String upliftKg, String upliftL, String readingAtDeparture, String readingAtArrival, String actualDencity, String upliftEng1, String upliftEng2, String readingAtDepartureEng1, String readingAtDepartureEng2, String readingAtArrivalEng1, String readingAtArrivalEng2, String inspectionCheckType, String stampLicence, String station, String docRefDoc, String pirepsMareps, String actionTaken, String senderId, String timestamp) {
+        this.timefuelcard=timefuelcard;
         this.preFlightCheckName = preFlightCheckName;
         this.flightNumber = flightNumber;
         this.stationFrom = stationFrom;
@@ -82,47 +83,8 @@ public class ReportModel {
         this.senderId = senderId;
         this.timestamp = timestamp;
     }
-
-    public ReportModel(String reportId,String actypeText,String preFlightCheckName, String flightNumber, String stationFrom, String stationTo, String departureBB, String departureAB, String captainAcceptance, String arrivalAB, String arrivalBB, String totalBB, String totalAB, String readingBeforeRefueling, String upliftKg, String upliftL, String readingAtDeparture, String readingAtArrival, String actualDencity, String upliftEng1, String upliftEng2, String readingAtDepartureEng1, String readingAtDepartureEng2, String readingAtArrivalEng1, String readingAtArrivalEng2, String inspectionCheckType, String stampLicence, String station, String docRefDoc, String pirepsMareps, String actionTaken, String senderId, String timestamp) {
-        this.reportId = reportId;
-        this.preFlightCheckName = preFlightCheckName;
-        this.flightNumber = flightNumber;
-        this.stationFrom = stationFrom;
-        this.stationTo = stationTo;
-        this.actypeText=actypeText;
-        this.departureBB = departureBB;
-        this.departureAB = departureAB;
-        this.captainAcceptance = captainAcceptance;
-        this.arrivalAB = arrivalAB;
-        this.arrivalBB = arrivalBB;
-        this.totalBB = totalBB;
-        this.totalAB = totalAB;
-        this.readingBeforeRefueling = readingBeforeRefueling;
-        this.upliftKg = upliftKg;
-        this.upliftL = upliftL;
-
-        this.readingAtDeparture = readingAtDeparture;
-        this.readingAtArrival = readingAtArrival;
-        this.actualDencity = actualDencity;
-        this.upliftEng1 = upliftEng1;
-        this.upliftEng2 = upliftEng2;
-
-        this.readingAtDepartureEng1 = readingAtDepartureEng1;
-        this.readingAtDepartureEng2 = readingAtDepartureEng2;
-        this.readingAtArrivalEng1 = readingAtArrivalEng1;
-        this.readingAtArrivalEng2 = readingAtArrivalEng2;
-        this.inspectionCheckType = inspectionCheckType;
-
-        this.stampLicence = stampLicence;
-        this.station = station;
-        this.docRefDoc = docRefDoc;
-        this.pirepsMareps = pirepsMareps;
-        this.actionTaken = actionTaken;
-
-        this.senderId = senderId;
-        this.timestamp = timestamp;
-    }
-    public ReportModel(String reportId,String actypeText,String preFlightCheckName, String flightNumber, String stationFrom, String stationTo, String departureBB, String departureAB, String captainAcceptance, String arrivalAB, String arrivalBB, String totalBB, String totalAB, String readingBeforeRefueling, String upliftKg, String upliftL, String readingAtDeparture, String readingAtArrival, String actualDencity, String upliftEng1, String upliftEng2, String readingAtDepartureEng1, String readingAtDepartureEng2, String readingAtArrivalEng1, String readingAtArrivalEng2, String inspectionCheckType, String stampLicence, String station, String docRefDoc, String pirepsMareps, String actionTaken, String senderId, String timestamp,String updatetimestamp) {
+    public ReportModel(String timefuelcard,String reportId,String actypeText,String preFlightCheckName, String flightNumber, String stationFrom, String stationTo, String departureBB, String departureAB, String captainAcceptance, String arrivalAB, String arrivalBB, String totalBB, String totalAB, String readingBeforeRefueling, String upliftKg, String upliftL, String readingAtDeparture, String readingAtArrival, String actualDencity, String upliftEng1, String upliftEng2, String readingAtDepartureEng1, String readingAtDepartureEng2, String readingAtArrivalEng1, String readingAtArrivalEng2, String inspectionCheckType, String stampLicence, String station, String docRefDoc, String pirepsMareps, String actionTaken, String senderId, String timestamp,String updatetimestamp) {
+        this.timefuelcard = timefuelcard;
         this.reportId = reportId;
         this.preFlightCheckName = preFlightCheckName;
         this.flightNumber = flightNumber;
@@ -227,6 +189,10 @@ public class ReportModel {
 
     public String getReadingAtArrival() {
         return readingAtArrival;
+    }
+
+    public String getTimefuelcard() {
+        return timefuelcard;
     }
 
     public String getActualDencity() {

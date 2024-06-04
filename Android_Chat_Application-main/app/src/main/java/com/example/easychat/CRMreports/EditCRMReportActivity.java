@@ -35,7 +35,7 @@ public class EditCRMReportActivity extends AppCompatActivity {
             readingAtArrivalInput, actualDencityInput, upliftEng1Input, upliftEng2Input,
             readingAtDepartureEng1Input, readingAtDepartureEng2Input, readingAtArrivalEng1Input,
             readingAtArrivalEng2Input, inspectionCheckTypeInput, stampLicenceInput, stationInput,
-            docRefDocInput,pirepsmareps,actiontaken,actype;
+            docRefDocInput,pirepsmareps,actiontaken,actype,timefuelcard;
 
     TextView timespam,updatetimespam;
     ReportModel reportModel;
@@ -70,7 +70,7 @@ public class EditCRMReportActivity extends AppCompatActivity {
         backBtn.setOnClickListener((v)->{
             onBackPressed();
         });
-
+        timefuelcard = findViewById(R.id.timefuelcard);
         timespam = findViewById(R.id.selected_date_text_view);
         updatetimespam = findViewById(R.id.selected_updatedate_text_view);
         actype =findViewById(R.id.actype);
@@ -104,6 +104,7 @@ public class EditCRMReportActivity extends AppCompatActivity {
         pirepsmareps = findViewById(R.id.pirepsmareps);
         actiontaken = findViewById(R.id.actiontaken);
 
+        timefuelcard.setText(reportModel.getTimefuelcard());
         transitcheckname.setText(reportModel.getPreFlightCheckName());
         flightnumber.setText(reportModel.getFlightNumber());
         stationFromInput.setText(reportModel.getStationFrom());
@@ -140,6 +141,7 @@ public class EditCRMReportActivity extends AppCompatActivity {
         pirepsmareps.setText(reportModel.getPirepsMareps());
         timespam.setText(reportModel.getTimestamp());
         transitcheckname.setEnabled(false);
+        timefuelcard.setEnabled(false);
         flightnumber.setEnabled(false);
         stationFromInput.setEnabled(false);
         stationToInput.setEnabled(false);
