@@ -50,39 +50,6 @@ public class EditCRMReportActivity extends AppCompatActivity {
         editBtn = findViewById(R.id.edit_btn);
 
         editBtn.setOnClickListener((v)-> {
-                    reportModel.setPreFlightCheckName(transitcheckname.getText().toString());
-                    reportModel.setFlightNumber(flightnumber.getText().toString());
-                    reportModel.setStationFrom(stationFromInput.getText().toString());
-                    reportModel.setStationTo(stationToInput.getText().toString());
-                    reportModel.setDepartureBB(departureBBInput.getText().toString());
-
-                    reportModel.setDepartureAB(departureABInput.getText().toString());
-                    reportModel.setCaptainAcceptance(captainAcceptanceInput.getText().toString());
-                    reportModel.setArrivalAB(arrivalABInput.getText().toString());
-                    reportModel.setArrivalBB(arrivalBBInput.getText().toString());
-                    reportModel.setActypeText(actype.getText().toString());
-
-                    reportModel.setTotalBB(totalBBInput.getText().toString());
-                    reportModel.setTotalAB(totalABInput.getText().toString());
-                    reportModel.setReadingBeforeRefueling(readingBeforeRefuelingInput.getText().toString());
-                    reportModel.setUpliftKg(upliftKgInput.getText().toString());
-                    reportModel.setUpliftL(upliftLInput.getText().toString());
-
-                    reportModel.setReadingAtDeparture(readingAtDepartureInput.getText().toString());
-                    reportModel.setReadingAtArrival(readingAtArrivalInput.getText().toString());
-                    reportModel.setActualDencity(actualDencityInput.getText().toString());
-                    reportModel.setUpliftEng1(upliftEng1Input.getText().toString());
-                    reportModel.setUpliftEng2(upliftEng2Input.getText().toString());
-
-                    reportModel.setReadingAtDepartureEng1(readingAtDepartureEng1Input.getText().toString());
-                    reportModel.setReadingAtDepartureEng2(readingAtDepartureEng2Input.getText().toString());
-                    reportModel.setReadingAtArrivalEng1(readingAtArrivalEng1Input.getText().toString());
-                    reportModel.setReadingAtArrivalEng2(readingAtArrivalEng2Input.getText().toString());
-                    reportModel.setInspectionCheckType(inspectionCheckTypeInput.getText().toString());
-
-                    reportModel.setStampLicence(stampLicenceInput.getText().toString());
-                    reportModel.setStation(stationInput.getText().toString());
-                    reportModel.setDocRefDoc(docRefDocInput.getText().toString());
                     reportModel.setActionTaken(actiontaken.getText().toString());
                     reportModel.setPirepsMareps(pirepsmareps.getText().toString());
                     reportModel.setUpdatetimestamp(FirebaseUtil.datestampToString(Timestamp.now()));
@@ -172,6 +139,35 @@ public class EditCRMReportActivity extends AppCompatActivity {
         actiontaken.setText(reportModel.getActionTaken());
         pirepsmareps.setText(reportModel.getPirepsMareps());
         timespam.setText(reportModel.getTimestamp());
+        transitcheckname.setEnabled(false);
+        flightnumber.setEnabled(false);
+        stationFromInput.setEnabled(false);
+        stationToInput.setEnabled(false);
+        departureBBInput.setEnabled(false);
+        departureABInput.setEnabled(false);
+        captainAcceptanceInput.setEnabled(false);
+        arrivalABInput.setEnabled(false);
+        arrivalBBInput.setEnabled(false);
+        actype.setEnabled(false);
+        totalBBInput.setEnabled(false);
+        totalABInput.setEnabled(false);
+        readingBeforeRefuelingInput.setEnabled(false);
+        upliftKgInput.setEnabled(false);
+        upliftLInput.setEnabled(false);
+        readingAtDepartureInput.setEnabled(false);
+        readingAtArrivalInput.setEnabled(false);
+        actualDencityInput.setEnabled(false);
+        upliftEng1Input.setEnabled(false);
+        upliftEng2Input.setEnabled(false);
+        readingAtDepartureEng1Input.setEnabled(false);
+        readingAtDepartureEng2Input.setEnabled(false);
+        readingAtArrivalEng1Input.setEnabled(false);
+        readingAtArrivalEng2Input.setEnabled(false);
+        inspectionCheckTypeInput.setEnabled(false);
+        stampLicenceInput.setEnabled(false);
+        stationInput.setEnabled(false);
+        docRefDocInput.setEnabled(false);
+
         if(reportModel.getUpdatetimestamp()!=null){
             updatetimespam.setVisibility(View.VISIBLE);
             updatetimespam.setText("Last update:"+reportModel.getUpdatetimestamp());

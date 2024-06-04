@@ -55,11 +55,10 @@ public class CRMReportRecyclerAdapter extends FirestoreRecyclerAdapter<ReportMod
                 holder.lastMessageText.setText("Sent by: Unknown");
             }
             holder.lastMessageTime.setText("At: " + model.getTimestamp());
-            holder.usernameText.setText(model.getActypeText());
+            holder.usernameText.setText("A/C REG"+model.getActypeText());
             if(model.getUpdatetimestamp() != null){
                 holder.updateMessageTime.setText("Last update at "+model.getUpdatetimestamp());
             }else{
-                holder.updateMessageTime.setText("No updates for the moment");
             }
             holder.itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(context, CRMViewActivity.class);
