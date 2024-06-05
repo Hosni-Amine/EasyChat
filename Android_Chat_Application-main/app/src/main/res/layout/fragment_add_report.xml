@@ -29,7 +29,7 @@
         android:id="@+id/text_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="250dp"
+        android:minHeight="150dp"
         android:padding="10dp"
         android:hint="text here ..."
         android:textColorHint="@color/black"

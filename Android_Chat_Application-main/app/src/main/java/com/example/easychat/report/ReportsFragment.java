@@ -68,16 +68,9 @@ public class ReportsFragment extends Fragment {
     }
 
     void setupRecyclerView() {
-        FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                UserModel currentUserModel = task.getResult().toObject(UserModel.class);
-                String currentUserId = currentUserModel.getUserId();
                 Query query = FirebaseUtil.getReports()
                         .orderBy("timestamp", Query.Direction.DESCENDING);
-                if(currentUserModel.getUsertype().equals("Admin")) {
-                    query = FirebaseUtil.getReports()
-                            .orderBy("timestamp", Query.Direction.DESCENDING);
-                }
+
                 FirestoreRecyclerOptions<ChatMessageModel> options = new FirestoreRecyclerOptions.Builder<ChatMessageModel>()
                         .setQuery(query, ChatMessageModel.class)
                         .build();
@@ -86,8 +79,6 @@ public class ReportsFragment extends Fragment {
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                 recyclerView.setAdapter(adapter);
                 adapter.startListening();
-            }
-        });
     }
 
 

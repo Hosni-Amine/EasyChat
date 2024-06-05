@@ -39,26 +39,34 @@ public class ReportRecyclerAdapter extends FirestoreRecyclerAdapter<ChatMessageM
         FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 UserModel currentUserModel = task.getResult().toObject(UserModel.class);
-                if (model.getSenderId().equals(currentUserModel.getUserId())) {
-                    holder.lastMessageText.setText("Sent by you");
-                } else {
-                    FirebaseUtil.allUserCollectionReference().document(model.getSenderId()).get()
-                            .addOnCompleteListener(userTask -> {
-                                if (userTask.isSuccessful()) {
-                                    UserModel senderUser = userTask.getResult().toObject(UserModel.class);
-                                    holder.lastMessageText.setText("Sent by: " + senderUser.getUsername());
-                                } else {
-                                    holder.lastMessageText.setText("Sent by: Unknown");
-                                }
-                            });
-                }
+                FirebaseUtil.allUserCollectionReference().document(model.getSenderId()).get()
+                        .addOnCompleteListener(userTask -> {
+                            if (userTask.isSuccessful()) {
+                                UserModel senderUser = userTask.getResult().toObject(UserModel.class);
+                                String senderName = model.getSenderId().equals(currentUserModel.getUserId()) ? "you" : senderUser.getUsername();
+
+                                FirebaseUtil.allUserCollectionReference().document(model.getSender()).get()
+                                        .addOnCompleteListener(receiverTask -> {
+                                            if (receiverTask.isSuccessful()) {
+                                                UserModel receiverUser = receiverTask.getResult().toObject(UserModel.class);
+                                                String receiverName = receiverUser.getUsername();
+                                                holder.lastMessageText.setText("From " + senderName + " to " + receiverName);
+                                            } else {
+                                                holder.lastMessageText.setText("From " + senderName + " to Unknown");
+                                            }
+                                        });
+                            } else {
+                                holder.lastMessageText.setText("From Unknown to Unknown");
+                            }
+                        });
             } else {
-                holder.lastMessageText.setText("Sent by: Unknown");
+                holder.lastMessageText.setText("From Unknown to Unknown");
             }
             holder.lastMessageTime.setText("At: " + FirebaseUtil.datestampToString(model.getTimestamp()));
             holder.usernameText.setText(model.getMessage());
         });
     }
+
 
     @NonNull
     @Override

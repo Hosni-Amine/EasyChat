@@ -49,7 +49,6 @@ public class AddReportFragment extends Fragment {
 
     ImageButton backBtn;
     EditText text_input;
-    ReportModel reportModel;
     Button add_Btn;
     ProgressBar progressBar;
     private TextView selectedDateTextView;
@@ -73,6 +72,7 @@ public class AddReportFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
     private void fetchUserData() {
+        setInProgress(true);
         FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 UserModel currentUserModel = task.getResult().toObject(UserModel.class);
@@ -89,14 +89,11 @@ public class AddReportFragment extends Fragment {
                             }
                         }
                         spinnerAdapter.notifyDataSetChanged();
-                    } else {
-
                     }
                 });
-            } else {
-
             }
         });
+        setInProgress(false);
     }
 
 
@@ -130,7 +127,6 @@ public class AddReportFragment extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // Do nothing if nothing is selected
             }
         });
 
