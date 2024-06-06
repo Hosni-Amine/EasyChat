@@ -50,17 +50,21 @@ public class ReportRecyclerAdapter extends FirestoreRecyclerAdapter<ChatMessageM
                                             if (receiverTask.isSuccessful()) {
                                                 UserModel receiverUser = receiverTask.getResult().toObject(UserModel.class);
                                                 String receiverName = receiverUser.getUsername();
-                                                holder.lastMessageText.setText("From " + senderName + " to " + receiverName);
+                                                holder.reciever_name.setText("Sender : " + senderName );
+                                                holder.sender_name.setText("Reciever : " + receiverName );
                                             } else {
-                                                holder.lastMessageText.setText("From " + senderName + " to Unknown");
+                                                holder.reciever_name.setText("Sender : " + senderName );
+                                                holder.sender_name.setText("Reciever : Unknown" );
                                             }
                                         });
                             } else {
-                                holder.lastMessageText.setText("From Unknown to Unknown");
+                                holder.reciever_name.setText("Sender : Unknown");
+                                holder.sender_name.setText("Reciever : Unknown");
                             }
                         });
             } else {
-                holder.lastMessageText.setText("From Unknown to Unknown");
+                holder.reciever_name.setText("Sender : Unknown");
+                holder.sender_name.setText("Reciever : Unknown");
             }
             holder.lastMessageTime.setText("At: " + FirebaseUtil.datestampToString(model.getTimestamp()));
             holder.usernameText.setText(model.getMessage());
@@ -76,14 +80,16 @@ public class ReportRecyclerAdapter extends FirestoreRecyclerAdapter<ChatMessageM
     }
     class ChatroomModelViewHolder extends RecyclerView.ViewHolder{
         TextView usernameText;
-        TextView lastMessageText;
+        TextView reciever_name;
         TextView lastMessageTime;
+        TextView sender_name;
         ImageView profilePic;
 
         public ChatroomModelViewHolder(@NonNull View itemView) {
             super(itemView);
             usernameText = itemView.findViewById(R.id.user_name_text);
-            lastMessageText = itemView.findViewById(R.id.last_message_text);
+            reciever_name = itemView.findViewById(R.id.reciever_name);
+            sender_name = itemView.findViewById(R.id.sender_name);
             lastMessageTime = itemView.findViewById(R.id.last_message_time_text);
             profilePic = itemView.findViewById(R.id.profile_pic_image_view);
         }

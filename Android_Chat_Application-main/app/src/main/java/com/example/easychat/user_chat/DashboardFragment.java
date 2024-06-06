@@ -67,7 +67,6 @@ public class DashboardFragment extends Fragment {
 
         RelativeLayout editProfileBtn = view.findViewById(R.id.edit_profile_btn);
         RelativeLayout rereports_btn = view.findViewById(R.id.rereports_btn);
-        RelativeLayout statistics_btn = view.findViewById(R.id.statistics_btn);
         RelativeLayout reps_btn = view.findViewById(R.id.reps);
         RelativeLayout cathalog_btn = view.findViewById(R.id.cathalog);
         RelativeLayout logoutBtn = view.findViewById(R.id.logout_btn);
@@ -99,18 +98,6 @@ public class DashboardFragment extends Fragment {
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.main_frame_layout, profileFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
-            }
-        });
-        //new
-        statistics_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StatisticsFragment statisticsFragment = new StatisticsFragment();
-                FragmentManager fragmentManager = getParentFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.main_frame_layout, statisticsFragment );
                 transaction.addToBackStack(null);
                 transaction.commit();
             }

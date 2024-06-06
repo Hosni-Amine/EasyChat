@@ -290,44 +290,6 @@
 
                 <RelativeLayout
                     android:clickable="true"
-                    android:id="@+id/statistics_btn"
-                    android:focusable="true"
-                    android:background="@color/white"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/gisddnoussst"
-                        android:text="Statistics"
-                        android:layout_marginBottom="10dp"
-                        android:textSize="15sp"
-                        android:textColor="@color/my_primary"
-                        android:layout_marginTop="10dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@+id/gisddnosdut"/>
-
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:id="@+id/gisddnosdut"
-                        android:src="@drawable/barchart"
-                        android:layout_marginTop="15dp"
-                        android:layout_centerHorizontal="true"/>
-
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                app:cardCornerRadius="20dp">
-
-                <RelativeLayout
-                    android:clickable="true"
                     android:focusable="true"
                     android:layout_height="115dp"
                     android:id="@+id/logout_btn"

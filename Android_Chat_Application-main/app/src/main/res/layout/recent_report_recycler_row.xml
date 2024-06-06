@@ -27,16 +27,25 @@
         android:orientation="vertical"
         android:layout_gravity="center">
         <RelativeLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/last_message_text"
+                android:id="@+id/sender_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/my_primary"
                 android:textStyle="bold"
-                tools:text="User name" />
+                tools:text="Sender name" />
+            <TextView
+                android:id="@+id/reciever_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/my_primary"
+                android:textStyle="bold"
+                android:layout_below="@id/sender_name"
+                tools:text="Reciever name" />
         </RelativeLayout>
 
         <TextView
